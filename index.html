@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Island USA S8 — Villa Intelligence Dashboard</title>
+<style>
+:root{
+  --bg:#0c0b14; --bg2:#15131f; --card:#1b1828; --card2:#221e33;
+  --line:#2c2740; --txt:#f4f1fb; --muted:#9c95b8; --dim:#6e6889;
+  --coral:#ff5d7e; --coral2:#ff8a5b; --teal:#34e3c8; --gold:#ffd166;
+  --green:#3ddc84; --red:#ff4d5e; --orange:#ff9f43; --gray:#5c5775; --blue:#5b8def;
+  --grad:linear-gradient(120deg,#ff5d7e,#ff8a5b);
+  --grad2:linear-gradient(120deg,#34e3c8,#5b8def);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;color-scheme:dark}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(12,11,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:10px 16px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.brand{font-weight:800;letter-spacing:.5px;font-size:15px;white-space:nowrap;margin-right:8px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav a.tab{font-size:12.5px;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px;white-space:nowrap;transition:.15s}
+.nav a.tab:hover{color:var(--txt);background:var(--card)}
+
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px 80px}
+section{padding-top:46px;scroll-margin-top:60px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:22px;font-weight:800;letter-spacing:.3px}
+.sec-head .num{font-size:12px;font-weight:700;color:var(--coral);background:rgba(255,93,126,.12);padding:3px 8px;border-radius:20px}
+.sec-head p{font-size:13px;color:var(--muted);flex-basis:100%}
+
+/* HERO */
+.hero{padding-top:34px}
+.hero-top{display:flex;flex-direction:column;gap:6px;margin-bottom:22px}
+.hero-top .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);font-weight:700}
+.hero-top h1{font-size:34px;font-weight:900;letter-spacing:-.5px;line-height:1.05}
+.hero-top h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-top .sub{font-size:13.5px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad)}
+.stat .k{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);font-weight:700}
+.stat .v{font-size:26px;font-weight:900;margin-top:4px;line-height:1}
+.stat .d{font-size:12px;color:var(--muted);margin-top:4px}
+.stat.wide{grid-column:span 2}
+.stat .v.sm{font-size:17px}
+.chip{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin:2px 3px 0 0}
+.chip.green{background:rgba(61,220,132,.15);color:var(--green)}
+.chip.orange{background:rgba(255,159,67,.16);color:var(--orange)}
+.chip.coral{background:rgba(255,93,126,.16);color:var(--coral)}
+.chip.gray{background:rgba(140,134,170,.16);color:var(--muted)}
+
+/* CARDS GRID */
+.grid{display:grid;gap:14px}
+.dir-grid{grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}
+.icard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:.18s;position:relative}
+.icard:hover{transform:translateY(-4px);border-color:var(--coral);box-shadow:0 12px 30px -12px rgba(255,93,126,.4)}
+.icard .ph{position:relative;aspect-ratio:1/1.08;overflow:hidden;background:var(--card2)}
+.icard .ph img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.avatar-fb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;color:#fff}
+.icard .badge{position:absolute;top:8px;left:8px;font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;backdrop-filter:blur(4px)}
+.b-active{background:rgba(61,220,132,.85);color:#06231a}
+.b-bomb{background:rgba(255,159,67,.9);color:#3a2200}
+.b-dump{background:rgba(140,134,170,.85);color:#1a172a}
+.b-removed{background:rgba(255,77,94,.85);color:#2a0006}
+.icard .meta{padding:10px 12px 12px}
+.icard .meta h3{font-size:15px;font-weight:800;display:flex;align-items:center;gap:6px}
+.icard .meta .role{font-size:11.5px;color:var(--muted);margin-top:2px}
+.icard .meta .loc{font-size:11px;color:var(--dim);margin-top:3px}
+.flag{font-size:11px}
+.heart-mini{font-size:10px;color:var(--coral)}
+
+/* COUPLES */
+.cpl-grid{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.couple{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.cpl-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cpl-person{display:flex;flex-direction:column;align-items:center;gap:6px;width:96px;cursor:pointer}
+.cpl-person:hover .cpl-img{border-color:var(--coral)}
+.cpl-img{width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid var(--line);background:var(--card2);transition:.15s}
+.cpl-img img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.cpl-person .nm{font-size:13px;font-weight:800;text-align:center}
+.cpl-person .ag{font-size:11px;color:var(--dim)}
+.cpl-link{font-size:24px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
+.cpl-wants{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:var(--bg2);border-radius:12px;padding:10px}
+.cpl-wants .w h5{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--teal);margin-bottom:4px}
+.cpl-wants .w li{font-size:11.5px;color:var(--muted);list-style:none;padding-left:12px;position:relative}
+.cpl-wants .w li::before{content:"•";position:absolute;left:2px;color:var(--coral)}
+.cpl-sum{font-size:12.5px;color:var(--muted)}
+.cpl-sum b{color:var(--txt)}
+.cpl-sum .row{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}
+.meter-wrap{display:flex;flex-direction:column;gap:7px}
+.meter{display:grid;grid-template-columns:92px 1fr 30px;align-items:center;gap:8px}
+.meter .ml{font-size:11px;color:var(--dim)}
+.meter .mbar{height:7px;background:var(--line);border-radius:6px;overflow:hidden}
+.meter .mfill{height:100%;border-radius:6px;background:var(--grad2)}
+.meter .mv{font-size:11px;font-weight:700;text-align:right;color:var(--muted)}
+.overall{display:flex;align-items:center;justify-content:space-between;border-top:1px dashed var(--line);padding-top:10px}
+.overall .lbl{font-size:12px;font-weight:700;color:var(--muted)}
+.overall .score{font-size:30px;font-weight:900}
+.tag-strength{font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px}
+
+/* TIMELINE / history map */
+.tl{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px}
+.tl-col{min-width:230px;flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px}
+.tl-col h4{font-size:13px;font-weight:800;margin-bottom:3px}
+.tl-col .day{font-size:11px;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.tl-col .ev{font-size:11.5px;color:var(--muted);margin:8px 0;padding-left:10px;border-left:2px solid var(--line)}
+.pair{display:flex;align-items:center;gap:6px;font-size:12px;margin:7px 0;padding:6px 8px;border-radius:9px;background:var(--bg2)}
+.pair .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pair .ar{color:var(--dim);font-size:11px}
+.pair.cur{border-left:3px solid var(--green)}
+.pair.former{border-left:3px solid var(--gray);opacity:.78}
+.pair.bomb{border-left:3px solid var(--orange)}
+.pair.toxic{border-left:3px solid var(--red)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;font-size:11.5px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+/* DRAMA */
+.drama-controls{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.btn{font-size:12px;font-weight:700;padding:6px 13px;border-radius:20px;background:var(--card);border:1px solid var(--line);color:var(--muted);cursor:pointer;transition:.15s}
+.btn:hover{color:var(--txt);border-color:var(--coral)}
+.btn.on{background:var(--grad);color:#fff;border-color:transparent}
+.drama-list{display:flex;flex-direction:column;gap:10px}
+.devent{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px;display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:start}
+.devent .ep{text-align:center}
+.devent .ep .e{font-size:18px;font-weight:900}
+.devent .ep .l{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim)}
+.devent .body h4{font-size:14px;font-weight:800;margin-bottom:3px}
+.devent .body .ppl{font-size:11.5px;color:var(--coral);font-weight:600;margin-bottom:4px}
+.devent .body p{font-size:12.5px;color:var(--muted)}
+.devent .body .out{font-size:11.5px;margin-top:5px;color:var(--txt)}
+.devent .body .out b{color:var(--gold)}
+.etype{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:20px;white-space:nowrap}
+
+/* MATRIX */
+.matrix-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table.mx{border-collapse:collapse;font-size:11px;min-width:600px}
+table.mx th,table.mx td{padding:0;text-align:center}
+table.mx thead th{position:sticky;top:0;background:var(--bg2);height:84px;vertical-align:bottom;padding-bottom:6px;z-index:2}
+table.mx thead th .rot{writing-mode:vertical-rl;transform:rotate(180deg);font-size:10.5px;color:var(--muted);white-space:nowrap;font-weight:600;margin:0 auto}
+table.mx tbody th{position:sticky;left:0;background:var(--bg2);text-align:right;padding:0 8px;font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap;z-index:1}
+table.mx td{width:34px;height:34px;font-weight:800;color:#0c0b14;cursor:default;border:1px solid var(--bg)}
+table.mx td.self{background:var(--bg2)!important;color:var(--dim)}
+.corner{position:sticky;left:0;background:var(--bg2);z-index:3}
+
+/* NETWORK */
+.net-wrap{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+#net{width:100%;display:block;touch-action:none}
+.net-hint{font-size:11.5px;color:var(--dim);padding:10px 14px;border-top:1px solid var(--line)}
+
+/* EPISODE LOG */
+.log{position:relative;padding-left:26px}
+.log::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.logitem{position:relative;margin-bottom:16px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+.logitem::before{content:"";position:absolute;left:-22px;top:18px;width:11px;height:11px;border-radius:50%;background:var(--grad);border:2px solid var(--bg)}
+.logitem .lh{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.logitem .lh .ep{font-size:13px;font-weight:900}
+.logitem .lh .dt{font-size:11px;color:var(--dim)}
+.logitem .lh .dy{font-size:10px;font-weight:800;color:var(--teal);background:rgba(52,227,200,.12);padding:2px 8px;border-radius:20px}
+.logrow{display:flex;gap:8px;font-size:12px;margin:5px 0;align-items:baseline}
+.logrow .tag{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:5px;flex-shrink:0;min-width:74px;text-align:center}
+.logrow .tx{color:var(--muted)}
+.t-arr{background:rgba(52,227,200,.15);color:var(--teal)}
+.t-rec{background:rgba(91,141,239,.15);color:var(--blue)}
+.t-dmp{background:rgba(255,77,94,.15);color:var(--red)}
+.t-dra{background:rgba(255,159,67,.15);color:var(--orange)}
+.t-cpl{background:rgba(61,220,132,.15);color:var(--green)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto;background:rgba(6,5,12,.78);backdrop-filter:blur(6px)}
+.modal.open{display:flex}
+.sheet{background:var(--bg2);border:1px solid var(--line);border-radius:20px;max-width:680px;width:100%;overflow:hidden;animation:pop .22s ease}
+@keyframes pop{from{transform:translateY(16px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.m-hero{display:flex;gap:16px;padding:18px;background:linear-gradient(180deg,var(--card2),var(--bg2))}
+.m-img{width:104px;height:124px;border-radius:14px;overflow:hidden;flex-shrink:0;background:var(--card)}
+.m-img img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.m-id{flex:1;min-width:0}
+.m-id h3{font-size:23px;font-weight:900;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.m-id .sub{font-size:13px;color:var(--muted);margin-top:3px}
+.m-id .sub b{color:var(--txt)}
+.m-close{background:var(--card);border:1px solid var(--line);color:var(--txt);width:34px;height:34px;border-radius:10px;font-size:18px;cursor:pointer;flex-shrink:0}
+.m-close:hover{border-color:var(--coral)}
+.m-body{padding:18px;display:flex;flex-direction:column;gap:18px}
+.m-block h4{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--coral);margin-bottom:8px;font-weight:800}
+.m-block p{font-size:13px;color:var(--muted)}
+.want-chips{display:flex;flex-wrap:wrap;gap:6px}
+.want-chips span{font-size:12px;background:rgba(52,227,200,.1);color:var(--teal);padding:4px 11px;border-radius:20px;font-weight:600}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pbox{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:10px 12px}
+.pbox h5{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.pbox p{font-size:12.5px;color:var(--txt)}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.statbox{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:10px;text-align:center}
+.statbox .n{font-size:21px;font-weight:900}
+.statbox .l{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.mtl{display:flex;flex-direction:column;gap:0}
+.mtl .it{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.mtl .it:last-child{border-bottom:0}
+.mtl .it .d{font-size:11px;font-weight:800;color:var(--teal)}
+.mtl .it .c{font-size:12.5px;color:var(--muted)}
+.mtl .it .c b{color:var(--txt)}
+.est{font-size:10.5px;color:var(--dim);font-style:italic}
+.disclaimer{font-size:11.5px;color:var(--dim);background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:10px 13px;margin-top:8px}
+
+.tip{position:fixed;z-index:200;pointer-events:none;background:#000;border:1px solid var(--coral);border-radius:10px;padding:9px 12px;font-size:11.5px;max-width:230px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.tip h6{font-size:12px;font-weight:800;margin-bottom:3px}
+.tip .s{color:var(--green)}.tip .w{color:var(--red)}.tip .n{color:var(--muted);margin-top:3px}
+
+.updatebar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(120deg,rgba(255,93,126,.10),rgba(52,227,200,.08));border:1px solid var(--line);border-radius:14px;padding:11px 14px;margin-bottom:14px;flex-wrap:wrap}
+.ub-left{display:flex;align-items:center;gap:11px}
+.ub-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.5)}70%{box-shadow:0 0 0 8px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}
+.ub-title{font-size:13px;font-weight:800}
+.ub-meta{font-size:11.5px;color:var(--muted)}
+.ub-meta b{color:var(--txt)}
+.ub-btn{font-size:13px;font-weight:800;padding:9px 16px;border-radius:10px;border:none;cursor:pointer;color:#fff;background:var(--grad);transition:.15s;white-space:nowrap}
+.ub-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.ub-btn:disabled{opacity:.6;cursor:default;transform:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:#000;border:1px solid var(--coral);border-radius:12px;padding:12px 18px;font-size:13px;color:var(--txt);z-index:300;opacity:0;transition:.25s;box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:88vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.foot{margin-top:50px;border-top:1px solid var(--line);padding-top:18px;font-size:11.5px;color:var(--dim)}
+.foot a{color:var(--teal)}
+@media(max-width:640px){
+  .stats{grid-template-columns:1fr 1fr}
+  .hero-top h1{font-size:26px}
+  .pgrid{grid-template-columns:1fr}
+  .m-hero{flex-direction:row}
+  .cpl-wants{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <span class="brand">🌴 VILLA INTEL · S8</span>
+  <a class="tab" href="#status">Status</a>
+  <a class="tab" href="#directory">Islanders</a>
+  <a class="tab" href="#couples">Couples</a>
+  <a class="tab" href="#history">History Map</a>
+  <a class="tab" href="#drama">Drama</a>
+  <a class="tab" href="#matrix">Compatibility</a>
+  <a class="tab" href="#network">Network</a>
+  <a class="tab" href="#log">Episode Log</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- HERO + STATUS -->
+<section id="status" class="hero">
+  <div class="hero-top">
+    <div class="eyebrow">Love Island USA · Fiji</div>
+    <h1>Season 8 <span>Villa Intelligence</span></h1>
+    <div class="sub">Who's who, who's coupled, who got dumped, and where the drama is — updated through the latest aired episode.</div>
+  </div>
+  <div class="updatebar">
+    <div class="ub-left">
+      <span class="ub-dot"></span>
+      <div>
+        <div class="ub-title">Wikipedia sync</div>
+        <div class="ub-meta" id="syncStatus">Syncing from Wikipedia…</div>
+      </div>
+    </div>
+    <button class="ub-btn" id="ubBtn" onclick="runUpdate()">⟳ Sync now</button>
+  </div>
+  <div class="stats" id="statGrid"></div>
+</section>
+
+<!-- DIRECTORY -->
+<section id="directory">
+  <div class="sec-head"><span class="num">01</span><h2>Islander Directory</h2>
+    <p>Tap any islander for full profile, dating history, and stats. Photos & bios are factual; personality reads and scores are editorial estimates.</p>
+  </div>
+  <div class="grid dir-grid" id="dirGrid"></div>
+</section>
+
+<!-- COUPLES -->
+<section id="couples">
+  <div class="sec-head"><span class="num">02</span><h2>Current Couples</h2>
+    <p>Six couples standing after the Day 5 girls' recoupling. Compatibility scores are editorial estimates based on stated preferences and villa behavior.</p>
+  </div>
+  <div class="grid cpl-grid" id="cplGrid"></div>
+</section>
+
+<!-- HISTORY MAP -->
+<section id="history">
+  <div class="sec-head"><span class="num">03</span><h2>Relationship History Map</h2>
+    <p>Every coupling across the season, day by day.</p>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--green)"></i>Active couple</span>
+    <span><i style="background:var(--gray)"></i>Former / broken</span>
+    <span><i style="background:var(--orange)"></i>Bombshell pairing</span>
+    <span><i style="background:var(--red)"></i>Toxic / dramatic</span>
+  </div>
+  <div class="tl" id="timeline"></div>
+</section>
+
+<!-- DRAMA -->
+<section id="drama">
+  <div class="sec-head"><span class="num">04</span><h2>Drama Tracker</h2>
+    <p>Major villa events. Filter by type.</p>
+  </div>
+  <div class="drama-controls" id="dramaFilters"></div>
+  <div class="drama-list" id="dramaList"></div>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix">
+  <div class="sec-head"><span class="num">05</span><h2>Compatibility Matrix</h2>
+    <p>Hover (or tap) a cell for why a pairing may or may not work. Scores 0–100 are editorial estimates.</p>
+  </div>
+  <div class="matrix-scroll"><div id="matrixBox"></div></div>
+</section>
+
+<!-- NETWORK -->
+<section id="network">
+  <div class="sec-head"><span class="num">06</span><h2>Villa Network Graph</h2>
+    <p>Click a node to highlight everyone they're connected to.</p>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--green)"></i>Current romance</span>
+    <span><i style="background:var(--gray)"></i>Former romance</span>
+    <span><i style="background:var(--orange)"></i>Bombshell interest</span>
+    <span><i style="background:var(--red)"></i>Rivalry / triangle</span>
+  </div>
+  <div class="net-wrap">
+    <svg id="net" viewBox="0 0 820 560" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="net-hint">Green = together now · Gray = used to be · Orange = bombshell pull · Red = rivalry. Click again or click empty space to reset.</div>
+  </div>
+</section>
+
+<!-- EPISODE LOG -->
+<section id="log">
+  <div class="sec-head"><span class="num">07</span><h2>Episode Change Log</h2>
+    <p>The source of truth. Add a new entry here each episode to keep the dashboard current.</p>
+  </div>
+  <div class="log" id="logBox"></div>
+</section>
+
+<div class="foot">
+  <b>Data as of:</b> Episode 7 (Day 7), aired June 9 2026. Last refreshed June 9 2026.<br>
+  Names, ages, hometowns, occupations, couplings, dumpings and episode events are sourced from Wikipedia, Peacock/TODAY, Variety, Marie Claire and EntertainmentNow recaps. <b>Personality summaries, compatibility scores and relationship-strength reads are editorial estimates</b>, not official show data. Bombshell bios (Sol, Jen, Caleb) are preliminary. To update: edit the <code>DATA</code> object at the top of the script and add an episode to the change log.
+</div>
+</div>
+
+<div class="tip" id="tip"></div>
+<div class="toast" id="toast"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script>
+/* ============================================================
+   DATA LAYER  — edit here to update the dashboard each episode
+   ============================================================ */
+const STATUS = {
+  episode: 7, day: 7, activeIslanders: 15, activeCouples: 6,
+  updated: "Jun 9, 2026",
+  lastRecouple: "Day 5 — Girls' choice (aired Jun 7)",
+  lastDumping: "Sean Reifel (Day 6) — left single after recoupling",
+  bombshells: ["Sol Mýa","Jen Terry","Caleb McDaniel"],
+  newArrivals: ["Sol Mýa","Jen Terry","Caleb McDaniel"]
+};
+/* ============================================================
+   SEASON CONFIG — change this ONE line for next season
+   ============================================================ */
+// Wikipedia article title. For Season 9 update to: "Love Island (American TV series) season 9"
+const WIKI_ARTICLE = "Love Island (American TV series) season 8";
+
+/* ============================================================
+   WIKIPEDIA AUTO-SYNC  (no server, no API key — free forever)
+   Fetches factual islander roster + status from Wikipedia on
+   every page load. All editorial content (personality, scores,
+   relationship reads) stays as the baked-in data above.
+   Falls back silently to baked-in data if the fetch fails.
+   ============================================================ */
+function cleanWiki(s){
+  return(s||"")
+    .replace(/\{\{[^|}]*\|([^}]+)\}\}/g,"$1")          // {{template|content}} → content
+    .replace(/\{\{[^}]*\}\}/g,"")                        // {{template}} → ""
+    .replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g,"$1")    // [[link|text]] → text
+    .replace(/'{2,}/g,"").replace(/<br\s*\/?>/gi," ")
+    .replace(/<[^>]+>/g,"").replace(/&\w+;/gi," ")
+    .replace(/(?:colspan|rowspan|bgcolor|style|class|align)=["']?[^"'|\n;]*["']?/gi,"")
+    .replace(/\s+/g," ").trim();
+}
+function cellText(raw){
+  const s=raw.replace(/^[\|\s]+/,"").trim();
+  return s.includes("|")&&/(?:style|bgcolor|class|align)=/i.test(s)
+    ?cleanWiki(s.split("|").slice(-1)[0]):cleanWiki(s);
+}
+function wikiNameToIslander(firstName){
+  const fn=firstName.toLowerCase().trim();
+  const NICK={mackenzie:"kenzie",jennifer:"jen"};
+  const key=NICK[fn]||fn;
+  return ISLANDERS.find(i=>i.id===key||i.name.split(" ")[0].toLowerCase()===key);
+}
+async function fetchWikiUpdates(){
+  const qs=new URLSearchParams({action:"parse",page:WIKI_ARTICLE,prop:"wikitext",format:"json",origin:"*"});
+  const ctrl=new AbortController();
+  const t=setTimeout(()=>ctrl.abort(),10000);
+  try{
+    const res=await fetch(`https://en.wikipedia.org/w/api.php?${qs}`,{signal:ctrl.signal});
+    clearTimeout(t);
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const json=await res.json();
+    if(json.error)throw new Error(json.error.info);
+    const wikitext=json.parse?.wikitext?.["*"];
+    if(!wikitext)throw new Error("Empty wikitext");
+    return parseWikiCastTable(wikitext);
+  }catch(e){clearTimeout(t);throw e;}
+}
+function parseWikiCastTable(wikitext){
+  const updates={};
+  // Cast table is identified by containing "Participating" or "Dumped" status cells
+  const castM=/\{\|[\s\S]*?(?:Participating|Dumped)[\s\S]*?\|\}/.exec(wikitext);
+  if(!castM)return updates;
+  const rows=castM[0].split(/\n\|-+/);
+  for(const row of rows){
+    if(!row.trim()||/^[\s!{]/.test(row.trim()))continue;
+    // Column layout: [empty, name, age, hometown, entered, exited, status, ref]
+    const cells=row.split(/\n\|(?!\|)|\|\|/).map(cellText);
+    if(cells.length<6)continue;
+    const rawName=(cells[1]||"").trim();
+    if(!rawName||rawName.length<2||/style=|Notes/i.test(rawName))continue;
+    const isl=wikiNameToIslander(rawName.split(/\s+/)[0]);
+    if(!isl)continue;
+    if(!/Day\s*\d+/i.test(cells[4]||""))continue; // Validate Entered column
+    const exitedCell=cells[5]||"", statusCell=cells[6]||"";
+    let wStatus="";
+    if(/participating|active/i.test(statusCell))wStatus="active";
+    else if(/dumped|eliminated/i.test(statusCell))wStatus="dumped";
+    else if(/removed|withdrawn/i.test(statusCell))wStatus="removed";
+    const exitDay=(exitedCell.match(/\d+/)||[])[0];
+    if(wStatus||exitDay)updates[isl.id]={status:wStatus||null,exited:exitDay?parseInt(exitDay):null};
+  }
+  return updates;
+}
+function applyWikiUpdates(updates){
+  let changed=0;
+  for(const[id,u]of Object.entries(updates)){
+    const isl=ISLANDERS.find(i=>i.id===id);if(!isl)continue;
+    if(u.status&&u.status!==isl.status){
+      // Dumped/removed: always apply. Active: don't clobber bombshell designation.
+      if(u.status==="dumped"||u.status==="removed"){isl.status=u.status;changed++;}
+      else if(u.status==="active"&&isl.status!=="bombshell"&&isl.status!=="dumped"&&isl.status!=="removed"){isl.status=u.status;changed++;}
+    }
+    if(u.exited&&!isl.exited)isl.exited=u.exited;
+  }
+  STATUS.activeIslanders=ISLANDERS.filter(i=>i.status==="active"||i.status==="bombshell").length;
+  const lastDump=ISLANDERS.filter(i=>i.status==="dumped").sort((a,b)=>(b.exited||0)-(a.exited||0))[0];
+  if(lastDump)STATUS.lastDumping=`${lastDump.name} (Day ${lastDump.exited||"?"}) — left single`;
+  return changed;
+}
+// Re-renderable functions so wikiSync can refresh live-data sections
+function renderStatGrid(){
+  const lastDump=ISLANDERS.filter(i=>i.status==="dumped").sort((a,b)=>(b.exited||0)-(a.exited||0))[0];
+  const lastDumpName=lastDump?lastDump.name.split(" ")[0]:"—";
+  const lastDumpDay=lastDump?`Day ${lastDump.exited||"?"} — left single`:"—";
+  const bombs=ISLANDERS.filter(i=>i.status==="bombshell");
+  const el=document.getElementById("statGrid");if(!el)return;
+  el.innerHTML=`
+  <div class="stat"><div class="k">Episode</div><div class="v">${STATUS.episode}</div><div class="d">Day ${STATUS.day} in the villa</div></div>
+  <div class="stat"><div class="k">Active Islanders</div><div class="v">${STATUS.activeIslanders}</div><div class="d">incl. ${bombs.length} new bombshell${bombs.length!==1?"s":""}</div></div>
+  <div class="stat"><div class="k">Active Couples</div><div class="v">${STATUS.activeCouples}</div><div class="d">+ ${bombs.length} single bombshell${bombs.length!==1?"s":""}</div></div>
+  <div class="stat"><div class="k">Latest Dumping</div><div class="v sm">${lastDumpName}</div><div class="d">${lastDumpDay}</div></div>
+  <div class="stat wide"><div class="k">Most Recent Recoupling</div><div class="v sm">${STATUS.lastRecouple}</div><div class="d">Beatriz→Gabriel · Corbin→Kenzie · Kayda→Zach</div></div>
+  <div class="stat wide"><div class="k">Current Bombshells</div><div class="v sm">${bombs.map(b=>b.name.split(" ")[0]).join(" · ")||"None"}</div>
+    <div class="d">${bombs.map(b=>`<span class="chip orange">${b.name}</span>`).join("")}</div></div>
+`;
+}
+function renderDirGrid(){
+  const sortOrder={active:0,bombshell:1,dumped:2,removed:3};
+  const sorted=[...ISLANDERS].sort((a,b)=>sortOrder[a.status]-sortOrder[b.status]);
+  const el=document.getElementById("dirGrid");if(!el)return;
+  el.innerHTML=sorted.map(p=>{
+    const[bc,bl]=STBADGE[p.status];
+    return `<div class="icard" onclick="openProfile('${p.id}')">
+    <div class="ph"><span class="badge ${bc}">${bl}</span>${imgTag(p)}</div>
+    <div class="meta"><h3>${p.name.split(" ")[0]} <span class="flag">${p.flag}</span></h3>
+      <div class="role">${p.age} · ${p.job}</div>
+      <div class="loc">📍 ${p.home}</div>
+    </div></div>`;
+  }).join("");
+}
+async function wikiSync(isManual){
+  const syncEl=document.getElementById("syncStatus");
+  const btn=document.getElementById("ubBtn");
+  if(isManual&&btn){btn.disabled=true;btn.textContent="⟳ Syncing…";}
+  try{
+    const updates=await fetchWikiUpdates();
+    const changed=applyWikiUpdates(updates);
+    renderStatGrid();
+    renderDirGrid();
+    const now=new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+    if(syncEl)syncEl.innerHTML=`<span style="color:var(--green)">✓ Last synced from Wikipedia at ${now}</span> &nbsp;·&nbsp; Scores &amp; personality are editorial estimates`;
+    if(isManual)toast(`✓ Synced! ${changed>0?changed+" status change(s) detected.":"No new changes."}`);
+  }catch(e){
+    console.warn("Wikipedia sync skipped:",e.message);
+    if(syncEl)syncEl.innerHTML=`Sync unavailable — using saved data &nbsp;·&nbsp; Scores &amp; personality are editorial estimates`;
+    if(isManual)toast("⚠ Could not reach Wikipedia — showing saved data.");
+  }finally{
+    if(isManual&&btn){btn.disabled=false;btn.textContent="⟳ Sync now";}
+  }
+}
+
+// status: active | bombshell | dumped | removed
+const ISLANDERS = [
+  {id:"trinity",name:"Trinity Tatum",age:22,job:"Model",home:"Newport News, Virginia",flag:"🇺🇸",sex:"F",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-trinity-en-052826-5d6dd6.png",
+   color:"#ff5d7e",
+   wants:["Respectful","Main-character energy","Confident","Loyal"],
+   traits:"Self-assured, playful and unafraid to flirt; calls herself 'the prize.'",
+   strength:"Knows what she wants and goes for it; brings high energy.",
+   crit:"Some viewers find the 'prize' confidence a touch much early on.",
+   story:"Picked Bryce on night one as the only woman to choose him; rode out the Day 5 recoupling together and kissed every boy in the paint challenge before locking onto him."},
+  {id:"bryce",name:"Bryce Dettloff",age:29,job:"DJ & handyman",home:"Los Angeles, California",flag:"🇺🇸",sex:"M",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-bryce-en-052826-fbf5fc.png",
+   color:"#5b8def",
+   wants:["Easygoing","Genuine","Good vibes","Down-to-earth"],
+   traits:"Laid-back, sweet and steady; the calm one of the villa.",
+   strength:"Patient and understanding — handled Trinity's mixed signals gracefully.",
+   crit:"Low-drama style can read as passive to some fans.",
+   story:"The oldest original islander; chosen by Trinity night one and has been a reassuring constant for her since."},
+  {id:"gabriel",name:"Gabriel Vasconcelos",age:26,job:"Model",home:"Miami, FL (Rio de Janeiro)",flag:"🇧🇷",sex:"M",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-gabriel-en-052826-4b30b3.png",
+   color:"#34e3c8",
+   wants:["Affectionate","Adventurous","Open","Passionate"],
+   traits:"Trilingual charmer bringing 'Brazilian fire'; making out is his love language.",
+   strength:"Warm and reassuring — comforts Beatriz in Portuguese/Spanish.",
+   crit:"Beatriz worries he may chase the next shiny new arrival.",
+   story:"Left single on night one (odd man out), then picked by Beatriz at the Day 5 recoupling to form a brand-new couple."},
+  {id:"beatriz",name:"Beatriz Hatz",age:25,job:"Paralympic track athlete",home:"San Diego, California",flag:"🇺🇸",sex:"F",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-beatriz-en-052826-fa46b3.png",
+   color:"#ffd166",
+   wants:["Tall, dark & handsome","Emotionally deep","Secure","Genuine"],
+   traits:"Paralympic bronze medalist (long jump T64); confident but introspective.",
+   strength:"Self-aware and direct about what she needs from a partner.",
+   crit:"Can spiral into insecurity about not being 'soft and feminine' enough.",
+   story:"Coupled with Sean on night one, but switched to Gabriel at the Day 5 recoupling — a move that left Sean single and dumped."},
+  {id:"sincere",name:"Sincere Rhea",age:25,job:"Athlete",home:"Cape May, New Jersey",flag:"🇺🇸",sex:"M",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-sincere-en-052826-a1cfdb.png",
+   color:"#ff8a5b",
+   wants:["A chase","Loyal","Playful","Reassuring"],
+   traits:"Cheesy, name-proud flirt who 'likes the chase'; wears his emotions openly.",
+   strength:"Communicative and willing to work through conflict.",
+   crit:"Quick to anger and jealousy — bristled at Melanie's paint-challenge antics.",
+   story:"Chose Melanie over Aniya night one; the pair have been volatile but keep finding their way back ('all roads lead to Rome')."},
+  {id:"melanie",name:"Melanie Moreno",age:24,job:"Bikini store manager",home:"Los Angeles, California",flag:"🇩🇴",sex:"F",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-melanie-en-052826-4c9d16.png",
+   color:"#ff5d7e",
+   wants:["Fun","Passionate","Confident","Spicy"],
+   traits:"Brings Dominican flair; bold, flirty and not afraid to stir the pot.",
+   strength:"Magnetic and expressive; keeps things exciting.",
+   crit:"The drawn-out paint-challenge kiss with Corbin read as messy to viewers.",
+   story:"Wanted by both boys night one and chose Sincere; their up-and-down dynamic is one of the season's central storylines."},
+  {id:"kc",name:"KC Chandler",age:23,job:"Nursing assistant",home:"Fresno, California",flag:"🇺🇸",sex:"M",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-kc-en-052826-1ca4ac.png",
+   color:"#3ddc84",
+   wants:["Caring","Fun","Affectionate","Confident"],
+   traits:"Cheeky healthcare worker who jokes 'women love men in scrubs.'",
+   strength:"Easygoing humor and a settled night-one connection with Aniya.",
+   crit:"Joked about feeling 'blessed' by the new bombshells — and got shut down by Aniya.",
+   story:"Paired with Aniya as the last two standing night one; stable until the bombshell comment caused friction on Day 6."},
+  {id:"aniya",name:"Aniya Harvey",age:23,job:"Marketing",home:"Tyrone, Georgia",flag:"🇺🇸",sex:"F",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-aniya-en-052826-d1f53b.png",
+   color:"#5b8def",
+   wants:["Attentive","Honest","Confident","Family-minded"],
+   traits:"Daughter of NBA player Donnell Harvey; 'a bit competitive' but friendly and 'so extra.'",
+   strength:"Direct — names disrespect the moment she feels it.",
+   crit:"Some see the competitive streak flaring early.",
+   story:"Wanted Sincere night one but he chose Melanie, leaving her to pair with KC. Pushed back hard on KC's bombshell joke Day 6."},
+  {id:"zach",name:"Zach Georgiou",age:26,job:"Digital creator",home:"Birmingham, England",flag:"🇬🇧",sex:"M",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-zach-en-052826-815ea7.png",
+   color:"#34e3c8",
+   wants:["Cat person","Genuine","Easygoing","Loyal"],
+   traits:"British charm; brother of S7 bombshell Charlie Georgiou. Has a cat named Lolo.",
+   strength:"Settled quickly and makes his partner feel secure.",
+   crit:"Came in to 'do better' — fans waiting to see real depth.",
+   story:"Coupled with Kenzie night one, but lost her to bombshell Corbin at the recoupling — then immediately locked in with bombshell Kayda."},
+  {id:"kayda",name:"Kayda Reese Bosse",age:22,job:"Server / former model",home:"Manchester, New Hampshire",flag:"🇺🇸",sex:"F",status:"bombshell",entered:1,
+   photo:"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/love-island-usa-season-8-kayda.jpg",color:"#ff9f43",
+   wants:["Safe & secure","Sweet","Tall","Genuine"],
+   traits:"Former HS basketball shooting guard (5'9\"); left NYC modeling for a slower pace.",
+   strength:"Grounded and warm; brings calm certainty to her couple.",
+   crit:"Entered as a bombshell — some fans wary of how fast she locked in.",
+   story:"Bombshell who arrived in premiere week and chose Zach at the Day 5 recoupling; the two look 'locked in.'"},
+  {id:"corbin",name:"Corbin Mims",age:22,job:"Influencer / villa-rental owner",home:"Miami, Florida",flag:"🇺🇸",sex:"M",status:"bombshell",entered:4,
+   photo:"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/pea_lis8_characterportrait_titlesocial_textless_1920x1080_corbin_4277.jpg",color:"#ff8a5b",
+   wants:["Family-oriented","Ambitious","Loyal","Driven"],
+   traits:"Fitness content creator and co-owner of a Turks & Caicos villa-rental business; Stetson marketing grad.",
+   strength:"Decisive and confident — 'the power was in my hands.'",
+   crit:"Broke up a fan-favorite couple on arrival; seen as a disruptor.",
+   story:"Bombshell who picked Kenzie first at the Day 5 recoupling, ending her couple with Zach and creating a new pairing."},
+  {id:"kenzie",name:"Kenzie Annis",age:24,job:"Nurse (new grad)",home:"Kennesaw, Georgia",flag:"🇺🇸",sex:"F",status:"active",entered:1,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-kenzie-en-052826-81070b.png",
+   color:"#ffd166",
+   wants:["Family-oriented","Wants 5–10 kids","Stable","Kind"],
+   traits:"Graduated nursing school two days before the villa; 'starving for some boys' after 18 months single.",
+   strength:"Open about wanting a big family and a real future.",
+   crit:"Swapped from Zach to Corbin fast — some question the whiplash.",
+   story:"Coupled with Zach night one, then chosen by bombshell Corbin at the Day 5 recoupling."},
+  {id:"sol",name:"Sol Mýa",age:24,job:"Model & artist",home:"Orange, CA (lives in LA)",flag:"🇺🇸",sex:"F",status:"bombshell",entered:6,
+   photo:"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/pea_lis8_characterportrait_titlesocial_textless_1920x1080_sol_4277.jpg",color:"#ff5d7e",
+   wants:["A challenge","Confident","Driven","Magnetic"],
+   traits:"Fashion model who also paints, writes and sings; 'doesn't have a problem getting guys.'",
+   strength:"Fearless and competitive — comes to win.",
+   crit:"Openly there 'to take one of their men.'",
+   story:"Stormed the Day 6 slumber-party challenge in red paint and singled out Corbin, KC and Sincere."},
+  {id:"jen",name:"Jen Terry",age:23,job:"Model",home:"Melbourne, FL (lives in LA)",flag:"🇺🇸",sex:"F",status:"bombshell",entered:6,
+   photo:"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/pea_lis8_characterportrait_titlesocial_textless_1920x1080_jen_4277.jpg",color:"#ff8a5b",
+   wants:["Ambitious","Confident","Attentive","Real"],
+   traits:"Pro model (Guess, SKIMS, Tecovas) working NY/LA/Miami.",
+   strength:"Knows her worth and is upfront about her intentions.",
+   crit:"'There to take one of their men' — instant threat to the girls.",
+   story:"Entered Day 6 right after Sol, kissing the chained-up boys before the blindfolds came off."},
+  {id:"caleb",name:"Caleb McDaniel",age:21,job:"Model & fitness",home:"Asheboro, NC (lives in Charleston)",flag:"🇺🇸",sex:"M",status:"bombshell",entered:6,
+   photo:"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/pea_lis8_characterportrait_titlesocial_textless_1920x1080_caleb_4277.jpg",color:"#5b8def",
+   wants:["Fun","Confident","Genuine","Active"],
+   traits:"Charleston-based model (Home Depot campaigns) and gym devotee.",
+   strength:"Youthful energy; the girls were quick to gravitate to him.",
+   crit:"Youngest in the villa — unproven so far.",
+   story:"The night's surprise third bombshell on Day 6, cut loose to meet the women immediately."},
+  {id:"sean",name:"Sean Reifel",age:29,job:"Police officer",home:"Easton, Pennsylvania",flag:"🇺🇸",sex:"M",status:"dumped",entered:1,exited:6,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-sean-en-052826-3996ff.png",
+   color:"#5c5775",
+   wants:["Thoughtful","Caring","Mature","Genuine"],
+   traits:"Police officer and dad to a young son; the steady, caring type.",
+   strength:"Emotionally supportive — 'I'll help you sift through it.'",
+   crit:"Couldn't build a strong enough connection to survive the first vote.",
+   story:"Coupled with Beatriz night one, but she chose Gabriel at the Day 5 recoupling, leaving Sean single. Dumped from the villa Day 6."},
+  {id:"vasana",name:"Vasana Montgomery",age:25,job:"Business owner",home:"Beaverton, Oregon",flag:"🇺🇸",sex:"F",status:"removed",entered:0,
+   photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-vasana-en-052826-a39f47.png",
+   color:"#ff4d5e",
+   wants:["—"],
+   traits:"Originally cast as an OG islander.",
+   strength:"—",
+   crit:"—",
+   story:"Removed from the cast before entering the villa (May 29) after videos surfaced of her using racist language. Never appeared in the villa."}
+];
+
+// COUPLES (current). person ids + scores (editorial)
+const COUPLES = [
+  {a:"trinity",b:"bryce",since:"Day 1",len:"6 days",how:"Trinity was the only woman to pick Bryce on night one, making them the first official couple of the season.",events:"Survived the Day 5 recoupling together; Trinity kissed every boy in the Day 6 paint challenge before locking onto Bryce.",
+   e:78,l:72,a_:74,c:80,overall:77,strength:"Strong"},
+  {a:"gabriel",b:"beatriz",since:"Day 5",len:"1 day",how:"Beatriz chose Gabriel at the Day 5 girls' recoupling, leaving Sean single.",events:"Honeymoon glow, but Beatriz already flagged a lack of deep conversation and fears Gabriel will chase a new arrival.",
+   e:58,l:64,a_:80,c:55,overall:62,strength:"Testing"},
+  {a:"sincere",b:"melanie",since:"Day 1",len:"6 days",how:"Both girls wanted Sincere night one; he chose Melanie.",events:"Volatile early arguments, then reconciliation — until Melanie's drawn-out paint-challenge kiss with Corbin reignited Sincere's jealousy on Day 6.",
+   e:60,l:66,a_:82,c:50,overall:60,strength:"Rocky"},
+  {a:"kc",b:"aniya",since:"Day 1",len:"6 days",how:"KC and Aniya were the last two standing on night one and coupled by default.",events:"Comfortable until KC joked he felt 'blessed' by the bombshell arrivals; Aniya shut it down on Day 6.",
+   e:64,l:70,a_:68,c:62,overall:66,strength:"Steady-ish"},
+  {a:"zach",b:"kayda",since:"Day 5",len:"1 day",how:"Bombshell Kayda chose Zach at the Day 5 recoupling after he was left by Kenzie.",events:"Looked the most 'locked in' of the new pairs; Kayda says Zach makes her feel safe and comfortable.",
+   e:70,l:74,a_:72,c:73,overall:72,strength:"Strong start"},
+  {a:"corbin",b:"kenzie",since:"Day 5",len:"1 day",how:"Bombshell Corbin picked Kenzie first at the Day 5 recoupling, ending her couple with Zach.",events:"Corbin gushed that picking her was 'easy'; both came in wanting family and a real future.",
+   e:66,l:68,a_:70,c:64,overall:67,strength:"Promising"}
+];
+
+// timeline columns (history map)
+const TIMELINE = [
+  {day:"Day 1", title:"First Coupling",
+   notes:["6 men, 5 women (Vasana removed pre-villa). Gabriel left single."],
+   pairs:[
+     {a:"Trinity",b:"Bryce",cls:"cur",txt:"Trinity → Bryce (only woman to pick him)"},
+     {a:"Sean",b:"Beatriz",cls:"former",txt:"Sean ⇄ Beatriz"},
+     {a:"Sincere",b:"Melanie",cls:"toxic",txt:"Sincere ⇄ Melanie (Aniya also wanted Sincere)"},
+     {a:"Zach",b:"Kenzie",cls:"former",txt:"Zach ⇄ Kenzie"},
+     {a:"KC",b:"Aniya",cls:"cur",txt:"KC ⇄ Aniya (last two standing)"}
+   ]},
+  {day:"Premiere week", title:"Bombshells Arrive",
+   notes:["Corbin & Kayda enter as the first bombshells."],
+   pairs:[
+     {a:"Corbin",b:"villa",cls:"bomb",txt:"Corbin enters — eyes on Kenzie"},
+     {a:"Kayda",b:"villa",cls:"bomb",txt:"Kayda enters — eyes on Zach"}
+   ]},
+  {day:"Day 5", title:"First Recoupling (girls' choice)",
+   notes:["Corbin picked first despite girls' night. Sean left single."],
+   pairs:[
+     {a:"Beatriz",b:"Gabriel",cls:"cur",txt:"Beatriz → Gabriel (drops Sean)"},
+     {a:"Corbin",b:"Kenzie",cls:"cur",txt:"Corbin → Kenzie (breaks Zach+Kenzie)"},
+     {a:"Kayda",b:"Zach",cls:"cur",txt:"Kayda → Zach"},
+     {a:"Sincere",b:"Melanie",cls:"toxic",txt:"Sincere ⇄ Melanie (stay)"},
+     {a:"Trinity",b:"Bryce",cls:"cur",txt:"Trinity ⇄ Bryce (stay)"},
+     {a:"KC",b:"Aniya",cls:"cur",txt:"KC ⇄ Aniya (stay)"}
+   ]},
+  {day:"Day 6", title:"Dumping + 3 Bombshells",
+   notes:["Sean dumped (single). Sol, Jen & Caleb storm the slumber-party challenge."],
+   pairs:[
+     {a:"Sean",b:"—",cls:"former",txt:"Sean dumped from the villa"},
+     {a:"Sol",b:"villa",cls:"bomb",txt:"Sol enters — eyes Corbin, KC, Sincere"},
+     {a:"Jen",b:"villa",cls:"bomb",txt:"Jen enters — 'here to take a man'"},
+     {a:"Caleb",b:"villa",cls:"bomb",txt:"Caleb enters — meets the girls"}
+   ]}
+];
+
+// DRAMA events
+const DRAMA = [
+  {ep:1,type:"Coupling",cls:"t-cpl",title:"Five couples form on night one",ppl:"All original islanders",
+   sum:"A doors-and-questions game set the first five couples. Gabriel was the odd man out, left single.",out:"First couples locked: Trinity+Bryce, Sean+Beatriz, Sincere+Melanie, Zach+Kenzie, KC+Aniya."},
+  {ep:1,type:"Removal",cls:"t-dmp",title:"Vasana Montgomery removed pre-villa",ppl:"Vasana Montgomery",
+   sum:"Days before premiere, videos surfaced of Vasana using racist language. Peacock cut her from the cast.",out:"Never entered the villa; villa opened with 11 islanders."},
+  {ep:2,type:"Bombshell",cls:"t-dra",title:"Double bombshell twist",ppl:"Corbin Mims, Kayda Reese Bosse",
+   sum:"Corbin and Kayda entered during the first challenge, immediately shaking the original couplings.",out:"Both set their sights on taken islanders (Kenzie and Zach)."},
+  {ep:3,type:"Drama",cls:"t-dra",title:"Sincere & Melanie's volatile streak",ppl:"Sincere Rhea, Melanie Moreno",
+   sum:"The couple cycled through repeated arguments ('left, right and sideways') before reconciling.",out:"Stayed together — for now."},
+  {ep:5,type:"Recoupling",cls:"t-rec",title:"First recoupling reshuffles the villa",ppl:"Beatriz, Gabriel, Corbin, Kenzie, Kayda, Zach, Sean",
+   sum:"Girls' choice night — but bombshell Corbin picked first. Beatriz left Sean for Gabriel; Corbin took Kenzie; Kayda took Zach.",out:"Sean left without a partner and vulnerable."},
+  {ep:5,type:"Dumping",cls:"t-dmp",title:"Sean dumped from the villa",ppl:"Sean Reifel",
+   sum:"Left single after Beatriz recoupled with Gabriel, Sean was dumped and sent home immediately.",out:"First eliminated islander of S8. Villa down to 12."},
+  {ep:6,type:"Triangle",cls:"t-dra",title:"Paint-challenge kiss sparks jealousy",ppl:"Melanie, Sincere, Corbin",
+   sum:"Blindfolded, Melanie locked Sincere and Corbin into a long back-and-forth kissing loop, infuriating Sincere.",out:"Cracks reopen in Sincere & Melanie."},
+  {ep:6,type:"Drama",cls:"t-dra",title:"KC's 'blessed' comment",ppl:"KC Chandler, Aniya Harvey",
+   sum:"KC joked he felt 'blessed' by the bombshell arrivals; Aniya bluntly told him it wasn't funny.",out:"Tension in a previously steady couple."},
+  {ep:6,type:"Bombshell",cls:"t-dra",title:"Triple bombshell storms the slumber party",ppl:"Sol Mýa, Jen Terry, Caleb McDaniel",
+   sum:"Sol, Jen and Caleb crashed the lingerie challenge. Sol singled out Corbin, KC and Sincere; Caleb met the girls.",out:"Honeymoon phase declared over; first public vote teased."},
+  {ep:6,type:"Vote",cls:"t-rec",title:"First public vote announced",ppl:"The public",
+   sum:"Ariana announced the season's first interactive fan vote via the Love Island app.",out:"Power shifts to viewers — results pending."},
+  {ep:7,type:"Vote",cls:"t-rec",title:"First public recoupling vote opens",ppl:"Caleb, Jen, Sol + the public",
+   sum:"Viewers vote to pair the three new bombshells: which girl couples with Caleb, and which boys couple with Jen and Sol. Voting opened 10:30pm ET and ran ~2.5 hours.",out:"Results revealed Thursday Jun 11 (Ep 8) — a recoupling looms."}
+];
+
+// EPISODE LOG (source of truth)
+const LOG = [
+  {ep:"Ep 1",date:"Jun 2, 2026",day:"Day 1",rows:[
+    {t:"arr",label:"Arrivals",tx:"11 original islanders enter (Vasana removed pre-villa)."},
+    {t:"cpl",label:"New Couples",tx:"Trinity+Bryce, Sean+Beatriz, Sincere+Melanie, Zach+Kenzie, KC+Aniya."},
+    {t:"dra",label:"Drama",tx:"Gabriel left single as the odd man out."}
+  ]},
+  {ep:"Ep 2",date:"Jun 3, 2026",day:"Day 2",rows:[
+    {t:"arr",label:"Arrivals",tx:"Bombshells Corbin Mims & Kayda Reese Bosse enter during the first challenge."},
+    {t:"dra",label:"Drama",tx:"Corbin and Kayda target Kenzie and Zach."}
+  ]},
+  {ep:"Ep 3",date:"Jun 4, 2026",day:"Day 3",rows:[
+    {t:"dra",label:"Drama",tx:"Sincere & Melanie's arguments escalate, then settle."}
+  ]},
+  {ep:"Ep 4",date:"Jun 6, 2026",day:"Day 4",rows:[
+    {t:"dra",label:"Drama",tx:"Bombshells deepen connections; tension builds ahead of the recoupling."}
+  ]},
+  {ep:"Ep 5",date:"Jun 7, 2026",day:"Day 5",rows:[
+    {t:"rec",label:"Recoupling",tx:"Girls' choice. Beatriz→Gabriel, Corbin→Kenzie, Kayda→Zach; Trinity+Bryce, Sincere+Melanie, KC+Aniya stay."},
+    {t:"dmp",label:"Dumping",tx:"Sean left single and was dumped from the villa."},
+    {t:"cpl",label:"New Couples",tx:"Gabriel+Beatriz, Corbin+Kenzie, Zach+Kayda formed."}
+  ]},
+  {ep:"Ep 6",date:"Jun 8, 2026",day:"Day 6",rows:[
+    {t:"arr",label:"Arrivals",tx:"Triple bombshell: Sol Mýa, Jen Terry & Caleb McDaniel crash the slumber-party challenge."},
+    {t:"dra",label:"Drama",tx:"Melanie's paint-challenge kiss with Corbin angers Sincere; KC's 'blessed' joke upsets Aniya."},
+    {t:"rec",label:"Vote",tx:"First public fan vote of the season announced."}
+  ]},
+  {ep:"Ep 7",date:"Jun 9, 2026",day:"Day 7",rows:[
+    {t:"rec",label:"Vote",tx:"First public recoupling vote opens — fans pick partners for bombshells Caleb, Jen & Sol."},
+    {t:"dra",label:"Drama",tx:"The three bombshells stir up the freshly recoupled villa; couples brace for the results."},
+    {t:"rec",label:"Pending",tx:"Vote results revealed Thursday Jun 11 (Ep 8) — a recoupling is coming."}
+  ]}
+];
+
+// individual dating-history timelines (id -> [{d,c}])
+const HISTORY = {
+  trinity:[{d:"Day 1",c:"<b>Enters villa.</b> Only woman to pick Bryce — first couple of the season."},{d:"Day 5",c:"Stays with Bryce at the recoupling."},{d:"Day 6",c:"Kisses every boy in the paint challenge before locking onto Bryce."}],
+  bryce:[{d:"Day 1",c:"<b>Enters villa.</b> Chosen by Trinity."},{d:"Day 5",c:"Survives recoupling with Trinity."},{d:"Day 6",c:"Reflects on Sean's exit; reaffirms with Trinity."}],
+  gabriel:[{d:"Day 1",c:"<b>Enters villa.</b> Left single (odd man out)."},{d:"Day 5",c:"<b>Chosen by Beatriz</b> at the recoupling — first couple."},{d:"Day 6",c:"Reassures Beatriz in Portuguese/Spanish; she flags a lack of deep talks."}],
+  beatriz:[{d:"Day 1",c:"<b>Enters villa.</b> Coupled with Sean."},{d:"Day 5",c:"<b>Recouples with Gabriel</b>, leaving Sean single."},{d:"Day 6",c:"Voices fear Gabriel may chase a new arrival."}],
+  sincere:[{d:"Day 1",c:"<b>Enters villa.</b> Wanted by Aniya & Melanie; picks Melanie."},{d:"Day 3",c:"Volatile arguments with Melanie, then reconcile."},{d:"Day 5",c:"Stays with Melanie."},{d:"Day 6",c:"Furious over Melanie's long kiss with Corbin in the challenge."}],
+  melanie:[{d:"Day 1",c:"<b>Enters villa.</b> Chosen by Sincere over Aniya."},{d:"Day 3",c:"On-and-off conflict with Sincere."},{d:"Day 5",c:"Recouples with Sincere (stays)."},{d:"Day 6",c:"Drawn-out paint-challenge kiss with Corbin sparks drama."}],
+  kc:[{d:"Day 1",c:"<b>Enters villa.</b> Coupled with Aniya (last two standing)."},{d:"Day 5",c:"Stays with Aniya."},{d:"Day 6",c:"'Blessed' bombshell joke upsets Aniya; Sol names him a target."}],
+  aniya:[{d:"Day 1",c:"<b>Enters villa.</b> Wanted Sincere; ends up with KC."},{d:"Day 5",c:"Stays with KC."},{d:"Day 6",c:"Shuts down KC's bombshell comment."}],
+  zach:[{d:"Day 1",c:"<b>Enters villa.</b> Coupled with Kenzie."},{d:"Day 5",c:"<b>Loses Kenzie to Corbin</b>; recouples with bombshell Kayda."},{d:"Day 6",c:"Looks 'locked in' with Kayda."}],
+  kayda:[{d:"Premiere wk",c:"<b>Enters as a bombshell.</b>"},{d:"Day 5",c:"<b>Chooses Zach</b> at the recoupling."},{d:"Day 6",c:"Says Zach makes her feel safe and comfortable."}],
+  corbin:[{d:"Premiere wk",c:"<b>Enters as a bombshell</b> during the first challenge."},{d:"Day 5",c:"<b>Picks Kenzie first</b>, breaking up Zach & Kenzie."},{d:"Day 6",c:"Pulled into Melanie's paint-challenge kiss; gushes over Kenzie."}],
+  kenzie:[{d:"Day 1",c:"<b>Enters villa.</b> Coupled with Zach."},{d:"Day 5",c:"<b>Chosen by bombshell Corbin</b>, ending her couple with Zach."},{d:"Day 6",c:"Settling in with Corbin."}],
+  sol:[{d:"Day 6",c:"<b>Enters as a bombshell.</b> Singles out Corbin, KC & Sincere."}],
+  jen:[{d:"Day 6",c:"<b>Enters as a bombshell.</b> 'Here to take one of their men.'"}],
+  caleb:[{d:"Day 6",c:"<b>Enters as the night's third bombshell.</b> Meets the girls right away."}],
+  sean:[{d:"Day 1",c:"<b>Enters villa.</b> Coupled with Beatriz."},{d:"Day 5",c:"Left single after Beatriz picks Gabriel."},{d:"Day 6",c:"<b>Dumped from the villa</b> and sent home."}],
+  vasana:[{d:"Pre-villa",c:"<b>Removed from the cast</b> before entering after racist videos surfaced."}]
+};
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const byId=id=>ISLANDERS.find(i=>i.id===id);
+const initials=n=>n.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase();
+function imgTag(p,cls){
+  if(p.photo) return `<img src="${p.photo}" alt="${p.name}" onerror="this.parentNode.innerHTML='<div class=\\'avatar-fb\\' style=\\'background:linear-gradient(135deg,${p.color},#221e33)\\'>${initials(p.name)}</div>'">`;
+  return `<div class="avatar-fb" style="background:linear-gradient(135deg,${p.color},#221e33)">${initials(p.name)}</div>`;
+}
+const STBADGE={active:["b-active","Active"],bombshell:["b-bomb","Bombshell"],dumped:["b-dump","Dumped"],removed:["b-removed","Removed"]};
+
+// STATUS + DIRECTORY — rendered via named functions so Wikipedia sync can refresh them
+renderStatGrid();
+renderDirGrid();
+
+// COUPLES
+$("#cplGrid").innerHTML=COUPLES.map(c=>{
+  const A=byId(c.a),B=byId(c.b);
+  const sc=v=>`<div class="meter"><span class="ml">${v[0]}</span><div class="mbar"><div class="mfill" style="width:${v[1]}%"></div></div><span class="mv">${v[1]}</span></div>`;
+  const stCol=c.overall>=73?'var(--green)':c.overall>=63?'var(--gold)':'var(--orange)';
+  return `<div class="couple">
+    <div class="cpl-top">
+      <div class="cpl-person" onclick="openProfile('${A.id}')"><div class="cpl-img">${imgTag(A)}</div><span class="nm">${A.name.split(" ")[0]}</span><span class="ag">${A.age}</span></div>
+      <div class="cpl-link">⇄</div>
+      <div class="cpl-person" onclick="openProfile('${B.id}')"><div class="cpl-img">${imgTag(B)}</div><span class="nm">${B.name.split(" ")[0]}</span><span class="ag">${B.age}</span></div>
+    </div>
+    <div class="cpl-wants">
+      <div class="w"><h5>${A.name.split(" ")[0]} wants</h5><ul>${A.wants.slice(0,3).map(w=>`<li>${w}</li>`).join("")}</ul></div>
+      <div class="w"><h5>${B.name.split(" ")[0]} wants</h5><ul>${B.wants.slice(0,3).map(w=>`<li>${w}</li>`).join("")}</ul></div>
+    </div>
+    <div class="cpl-sum">
+      <b>How they got together:</b> ${c.how}<br>
+      <b>Since:</b> ${c.since} (${c.len}) &nbsp; <b>Major events:</b> ${c.events}
+    </div>
+    <div class="meter-wrap">
+      ${sc(["Emotional",c.e])}${sc(["Lifestyle",c.l])}${sc(["Attraction",c.a_])}${sc(["Communication",c.c])}
+    </div>
+    <div class="overall">
+      <span class="lbl">Overall compatibility <span class="est">· est.</span></span>
+      <span style="display:flex;align-items:center;gap:10px">
+        <span class="tag-strength" style="background:${stCol}22;color:${stCol}">${c.strength}</span>
+        <span class="score" style="color:${stCol}">${c.overall}</span>
+      </span>
+    </div>
+  </div>`;
+}).join("");
+
+// TIMELINE
+$("#timeline").innerHTML=TIMELINE.map(col=>`
+  <div class="tl-col">
+    <div class="day">${col.day}</div><h4>${col.title}</h4>
+    ${col.notes.map(n=>`<div class="ev">${n}</div>`).join("")}
+    ${col.pairs.map(p=>`<div class="pair ${p.cls}"><span class="dot" style="background:${({cur:'var(--green)',former:'var(--gray)',bomb:'var(--orange)',toxic:'var(--red)'})[p.cls]}"></span>${p.txt}</div>`).join("")}
+  </div>`).join("");
+
+// DRAMA
+const dramaTypes=["All",...[...new Set(DRAMA.map(d=>d.type))]];
+const typeColor={Coupling:'t-cpl',Recoupling:'t-rec',Dumping:'t-dmp',Removal:'t-dmp',Drama:'t-dra',Bombshell:'t-dra',Triangle:'t-dra',Vote:'t-rec'};
+let dramaFilter="All",dramaSort="ep";
+$("#dramaFilters").innerHTML=dramaTypes.map((t,i)=>`<button class="btn ${i===0?'on':''}" data-f="${t}" onclick="setDrama('${t}')">${t}</button>`).join("")
+  +`<button class="btn" id="sortBtn" onclick="toggleSort()">Sort: Episode ↑</button>`;
+function renderDrama(){
+  let list=DRAMA.filter(d=>dramaFilter==="All"||d.type===dramaFilter);
+  list=[...list].sort((a,b)=>dramaSort==="ep"?a.ep-b.ep:b.ep-a.ep);
+  $("#dramaList").innerHTML=list.map(d=>`
+    <div class="devent">
+      <div class="ep"><div class="e">${d.ep}</div><div class="l">Ep</div></div>
+      <div class="body">
+        <h4>${d.title}</h4>
+        <div class="ppl">${d.ppl}</div>
+        <p>${d.sum}</p>
+        <div class="out"><b>Outcome:</b> ${d.out}</div>
+      </div>
+      <span class="etype ${d.cls}" style="background:var(--card);color:var(--muted)">${d.type}</span>
+    </div>`).join("");
+}
+function setDrama(t){dramaFilter=t;$$("#dramaFilters .btn[data-f]").forEach(b=>b.classList.toggle("on",b.dataset.f===t));renderDrama();}
+function toggleSort(){dramaSort=dramaSort==="ep"?"epd":"ep";$("#sortBtn").textContent="Sort: Episode "+(dramaSort==="ep"?"↑":"↓");renderDrama();}
+renderDrama();
+
+// COMPATIBILITY MATRIX (active + bombshells, exclude dumped/removed)
+const MX=ISLANDERS.filter(i=>i.status==="active"||i.status==="bombshell");
+function hash(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}return h;}
+function compat(a,b){
+  // explicit current-couple score if exists
+  const cp=COUPLES.find(c=>(c.a===a.id&&c.b===b.id)||(c.a===b.id&&c.b===a.id));
+  if(cp)return cp.overall;
+  // editorial estimate: word overlap + deterministic jitter, opposite-sex boost
+  const wa=a.wants.join(" ").toLowerCase(),wb=b.wants.join(" ").toLowerCase();
+  let overlap=0;a.wants.forEach(w=>{if(wb.includes(w.toLowerCase().split(" ")[0]))overlap++;});
+  const base=42+overlap*6;
+  const jit=hash([a.id,b.id].sort().join("-"))%26;
+  let s=base+jit;
+  if(a.sex!==b.sex)s+=6;else s-=14;
+  return Math.max(28,Math.min(94,s));
+}
+function heatColor(v){
+  // 28 red -> 60 amber -> 94 green
+  const t=(v-28)/(94-28);
+  const r=t<.5?255:Math.round(255-(t-.5)*2*200);
+  const g=t<.5?Math.round(90+t*2*150):240;
+  const b=Math.round(70+ (1-Math.abs(t-.5)*2)*30);
+  return `rgb(${r},${g},${b})`;
+}
+function reason(a,b,v){
+  const shared=a.wants.filter(w=>b.wants.some(x=>x.toLowerCase().split(" ")[0]===w.toLowerCase().split(" ")[0]));
+  const s=shared.length?shared.join(", "):"different priorities";
+  const w=a.sex===b.sex?"same-sex pairing — friendship more likely than romance":"contrasting energies to navigate";
+  const verdict=v>=70?"Strong potential":v>=55?"Worth a spark":v>=42?"Long shot":"Unlikely";
+  return {s,w,verdict};
+}
+let mxHTML='<table class="mx"><thead><tr><th class="corner"></th>'+MX.map(p=>`<th><div class="rot">${p.name.split(" ")[0]}${p.status==="bombshell"?' 💣':''}</div></th>`).join("")+'</tr></thead><tbody>';
+MX.forEach(a=>{
+  mxHTML+=`<tr><th>${a.name.split(" ")[0]}${a.status==="bombshell"?' 💣':''}</th>`;
+  MX.forEach(b=>{
+    if(a.id===b.id){mxHTML+=`<td class="self">—</td>`;return;}
+    const v=compat(a,b);
+    mxHTML+=`<td style="background:${heatColor(v)}" data-a="${a.id}" data-b="${b.id}" data-v="${v}" class="mxcell">${v}</td>`;
+  });
+  mxHTML+="</tr>";
+});
+mxHTML+="</tbody></table>";
+$("#matrixBox").innerHTML=mxHTML;
+// matrix tooltips
+const tip=$("#tip");
+function showTip(e,html){tip.innerHTML=html;tip.style.display="block";moveTip(e);}
+function moveTip(e){const x=(e.touches?e.touches[0].clientX:e.clientX),y=(e.touches?e.touches[0].clientY:e.clientY);
+  let tx=x+14,ty=y+14;if(tx+240>innerWidth)tx=x-240;if(ty+120>innerHeight)ty=y-120;tip.style.left=tx+"px";tip.style.top=ty+"px";}
+function hideTip(){tip.style.display="none";}
+$$(".mxcell").forEach(c=>{
+  const a=byId(c.dataset.a),b=byId(c.dataset.b),v=+c.dataset.v,r=reason(a,b,v);
+  const html=`<h6>${a.name.split(" ")[0]} × ${b.name.split(" ")[0]} — ${v}</h6>
+    <div class="s">✓ Shared: ${r.s}</div><div class="w">△ Watch: ${r.w}</div><div class="n">${r.verdict}. <i>Editorial estimate.</i></div>`;
+  c.addEventListener("mouseenter",e=>showTip(e,html));
+  c.addEventListener("mousemove",moveTip);
+  c.addEventListener("mouseleave",hideTip);
+  c.addEventListener("click",e=>{showTip(e,html);setTimeout(hideTip,2600);});
+});
+
+// EPISODE LOG
+$("#logBox").innerHTML=[...LOG].reverse().map(l=>`
+  <div class="logitem">
+    <div class="lh"><span class="ep">${l.ep}</span><span class="dt">${l.date}</span><span class="dy">${l.day}</span></div>
+    ${l.rows.map(r=>`<div class="logrow"><span class="tag t-${r.t}">${r.label}</span><span class="tx">${r.tx}</span></div>`).join("")}
+  </div>`).join("");
+
+/* ============================================================
+   NETWORK GRAPH (SVG, circular layout, click to highlight)
+   ============================================================ */
+const NET_NODES=ISLANDERS.filter(i=>i.status!=="removed"); // include dumped (Sean) crossed out
+// edges: type current|former|bomb|rivalry
+const EDGES=[
+  {a:"trinity",b:"bryce",t:"current"},
+  {a:"gabriel",b:"beatriz",t:"current"},
+  {a:"sincere",b:"melanie",t:"current"},
+  {a:"kc",b:"aniya",t:"current"},
+  {a:"zach",b:"kayda",t:"current"},
+  {a:"corbin",b:"kenzie",t:"current"},
+  {a:"sean",b:"beatriz",t:"former"},
+  {a:"zach",b:"kenzie",t:"former"},
+  {a:"sincere",b:"aniya",t:"former"},
+  {a:"corbin",b:"melanie",t:"rivalry"},
+  {a:"sincere",b:"corbin",t:"rivalry"},
+  {a:"sol",b:"corbin",t:"bomb"},
+  {a:"sol",b:"kc",t:"bomb"},
+  {a:"sol",b:"sincere",t:"bomb"},
+  {a:"jen",b:"kc",t:"bomb"},
+  {a:"jen",b:"bryce",t:"bomb"},
+  {a:"caleb",b:"trinity",t:"bomb"},
+  {a:"caleb",b:"aniya",t:"bomb"}
+];
+const EDGE_COL={current:"#3ddc84",former:"#5c5775",bomb:"#ff9f43",rivalry:"#ff4d5e"};
+const svg=$("#net");
+const W=820,H=560,cx=W/2,cy=H/2,R=Math.min(W,H)/2-70;
+const pos={};
+NET_NODES.forEach((n,i)=>{const ang=(i/NET_NODES.length)*Math.PI*2-Math.PI/2;pos[n.id]={x:cx+R*Math.cos(ang),y:cy+R*Math.sin(ang)};});
+let svgStr="";
+// edges
+EDGES.forEach((e,i)=>{
+  if(!pos[e.a]||!pos[e.b])return;
+  const p1=pos[e.a],p2=pos[e.b];
+  svgStr+=`<line class="edge" data-a="${e.a}" data-b="${e.b}" x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}" stroke="${EDGE_COL[e.t]}" stroke-width="${e.t==='current'?3:2}" stroke-opacity="${e.t==='former'?.4:.65}" ${e.t==='bomb'?'stroke-dasharray="5 4"':''}/>`;
+});
+// nodes
+NET_NODES.forEach(n=>{
+  const p=pos[n.id],dumped=n.status==="dumped";
+  const clip=`clip-${n.id}`;
+  svgStr+=`<g class="node" data-id="${n.id}" style="cursor:pointer">
+    <clipPath id="${clip}"><circle cx="${p.x}" cy="${p.y}" r="22"/></clipPath>
+    <circle cx="${p.x}" cy="${p.y}" r="24" fill="${n.color}" opacity="${dumped?.4:.9}"/>`;
+  if(n.photo){
+    svgStr+=`<image href="${n.photo}" x="${p.x-22}" y="${p.y-22}" width="44" height="44" clip-path="url(#${clip})" preserveAspectRatio="xMidYMin slice" opacity="${dumped?.45:1}"/>`;
+  }else{
+    svgStr+=`<text x="${p.x}" y="${p.y+5}" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" opacity="${dumped?.5:1}">${initials(n.name)}</text>`;
+  }
+  if(dumped)svgStr+=`<line x1="${p.x-22}" y1="${p.y-22}" x2="${p.x+22}" y2="${p.y+22}" stroke="#ff4d5e" stroke-width="3"/>`;
+  if(n.status==="bombshell")svgStr+=`<text x="${p.x+17}" y="${p.y-15}" font-size="14">💣</text>`;
+  const lx=p.x,ly=p.y+(p.y<cy?-32:38);
+  svgStr+=`<text x="${lx}" y="${ly}" text-anchor="middle" font-size="11" font-weight="700" fill="#f4f1fb">${n.name.split(" ")[0]}</text></g>`;
+});
+svg.innerHTML=svgStr;
+function netReset(){
+  $$("#net .edge").forEach(l=>{l.style.opacity="";l.setAttribute("stroke-opacity",l.dataset.b&&0||l.getAttribute("stroke-opacity"));});
+  $$("#net .edge").forEach(l=>l.style.display="");
+  $$("#net .node").forEach(g=>g.style.opacity="1");
+  $$("#net .edge").forEach(l=>l.style.opacity="1");
+}
+function highlight(id){
+  const connected=new Set([id]);
+  EDGES.forEach(e=>{if(e.a===id)connected.add(e.b);if(e.b===id)connected.add(e.a);});
+  $$("#net .node").forEach(g=>g.style.opacity=connected.has(g.dataset.id)?"1":"0.12");
+  $$("#net .edge").forEach(l=>{const on=(l.dataset.a===id||l.dataset.b===id);l.style.opacity=on?"1":"0.05";});
+}
+svg.addEventListener("click",e=>{
+  const g=e.target.closest(".node");
+  if(g){highlight(g.dataset.id);}else{netReset();}
+});
+
+/* ============================================================
+   PROFILE MODAL  (Sections: directory detail + dating history + stats)
+   ============================================================ */
+function statsFor(p){
+  const partners=new Set();EDGES.forEach(e=>{if((e.t==='current'||e.t==='former')){if(e.a===p.id)partners.add(e.b);if(e.b===p.id)partners.add(e.a);}});
+  const recoups=(HISTORY[p.id]||[]).filter(h=>/recouple|recoupl|chosen by|picks|loses/i.test(h.c)).length;
+  const bombInts=EDGES.filter(e=>e.t==='bomb'&&(e.a===p.id||e.b===p.id)).length;
+  const cur=COUPLES.find(c=>c.a===p.id||c.b===p.id);
+  return {partners:partners.size,recoups,bombInts,
+    longest:cur?cur.len:(p.status==='dumped'?'—':'—'),
+    single:p.status==='bombshell'?'Single (bombshell)':(cur?'0 days':'—')};
+}
+function openProfile(id){
+  const p=byId(id),[bc,bl]=STBADGE[p.status],st=statsFor(p);
+  const partner=(()=>{const c=COUPLES.find(c=>c.a===id||c.b===id);if(!c)return null;return byId(c.a===id?c.b:c.a);})();
+  $("#sheet").innerHTML=`
+    <div class="m-hero">
+      <div class="m-img">${imgTag(p)}</div>
+      <div class="m-id">
+        <h3>${p.name} <span class="flag">${p.flag}</span> <span class="badge ${bc}" style="position:static;font-size:10px">${bl}</span></h3>
+        <div class="sub"><b>${p.age}</b> · ${p.job}</div>
+        <div class="sub">📍 ${p.home}</div>
+        <div class="sub">Entered: <b>${p.entered?('Day '+p.entered):'Pre-villa (never entered)'}</b>${p.exited?` · Exited: <b>Day ${p.exited}</b>`:''}</div>
+        ${partner?`<div class="sub">💚 Coupled with <b>${partner.name.split(" ")[0]}</b></div>`:(p.status==='bombshell'?`<div class="sub">🔥 Currently single</div>`:'')}
+      </div>
+      <button class="m-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="m-body">
+      <div class="m-block">
+        <h4>Looking For <span class="est">· from intros</span></h4>
+        <div class="want-chips">${p.wants.map(w=>`<span>${w}</span>`).join("")}</div>
+      </div>
+      <div class="m-block">
+        <h4>Personality <span class="est">· editorial</span></h4>
+        <div class="pgrid">
+          <div class="pbox"><h5>Key traits</h5><p>${p.traits}</p></div>
+          <div class="pbox"><h5>Strength</h5><p>${p.strength}</p></div>
+          <div class="pbox"><h5>Common criticism</h5><p>${p.crit}</p></div>
+          <div class="pbox"><h5>Storyline</h5><p>${p.story}</p></div>
+        </div>
+      </div>
+      <div class="m-block">
+        <h4>Dating History</h4>
+        <div class="mtl">${(HISTORY[id]||[{d:'—',c:'No history recorded.'}]).map(h=>`<div class="it"><span class="d">${h.d}</span><span class="c">${h.c}</span></div>`).join("")}</div>
+      </div>
+      <div class="m-block">
+        <h4>Statistics <span class="est">· through Ep ${STATUS.episode}</span></h4>
+        <div class="stat-row">
+          <div class="statbox"><div class="n">${st.partners}</div><div class="l">Partners</div></div>
+          <div class="statbox"><div class="n">${st.recoups}</div><div class="l">Recouplings</div></div>
+          <div class="statbox"><div class="n">${st.bombInts}</div><div class="l">Bombshell links</div></div>
+        </div>
+        <div class="stat-row" style="margin-top:8px">
+          <div class="statbox" style="grid-column:span 1.5"><div class="n" style="font-size:14px">${st.longest}</div><div class="l">Longest couple</div></div>
+          <div class="statbox"><div class="n" style="font-size:14px">${p.status==='bombshell'?'Yes':'No'}</div><div class="l">Bombshell</div></div>
+          <div class="statbox"><div class="n" style="font-size:14px">${p.status==='active'||p.status==='bombshell'?'In villa':'Out'}</div><div class="l">Status</div></div>
+        </div>
+      </div>
+      <div class="disclaimer">Bios, ages, hometowns, jobs and timeline events are factual (Wikipedia / Peacock / recaps). Personality reads and any scores are <b>editorial estimates</b> for entertainment, not official data.</div>
+    </div>`;
+  $("#modal").classList.add("open");document.body.style.overflow="hidden";
+}
+function closeModal(){$("#modal").classList.remove("open");document.body.style.overflow="";}
+$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+// ---- Update bar / button ----
+function toast(msg,ms){const t=$("#toast");if(!t)return;t.innerHTML=msg;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("show"),ms||4200);}
+function runUpdate(){wikiSync(true);}
+wikiSync(); // Auto-sync with Wikipedia on every page load
+window.runUpdate=runUpdate;
+window.openProfile=openProfile;window.closeModal=closeModal;window.setDrama=setDrama;window.toggleSort=toggleSort;
+</script>
+</body>
+</html>
