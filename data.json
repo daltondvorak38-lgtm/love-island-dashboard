@@ -1,16 +1,17 @@
 {
-  "generated_at": "2026-06-09T00:00:00Z",
-  "sources_used": ["seed"],
+  "generated_at": "2026-06-11T00:00:00Z",
+  "sources_used": ["Wikipedia", "Parade", "Yahoo Entertainment", "AOL", "CarterMatt"],
   "status": {
-    "episode": 7,
-    "day": 7,
+    "episode": 8,
+    "day": 8,
     "activeIslanders": 15,
     "activeCouples": 6,
-    "updated": "Jun 9, 2026",
+    "updated": "Jun 11, 2026",
     "lastRecouple": "Day 5 — Girls' choice (aired Jun 7)",
     "lastDumping": "Sean Reifel (Day 6) — left single after recoupling",
     "bombshells": ["Sol Mýa", "Jen Terry", "Caleb McDaniel"],
-    "newArrivals": ["Sol Mýa", "Jen Terry", "Caleb McDaniel"]
+    "newArrivals": ["Sol Mýa", "Jen Terry", "Caleb McDaniel"],
+    "pendingVote": "First America's Vote results DELAYED to Ep 9 (app technical issues) — bombshell recoupling still looms"
   },
   "islanders": [
     {"id":"trinity","name":"Trinity Tatum","age":22,"job":"Model","home":"Newport News, Virginia","flag":"🇺🇸","sex":"F","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-trinity-en-052826-5d6dd6.png","color":"#ff5d7e","wants":["Respectful","Main-character energy","Confident","Loyal"],"traits":"Self-assured, playful and unafraid to flirt; calls herself 'the prize.'","strength":"Knows what she wants and goes for it; brings high energy.","crit":"Some viewers find the 'prize' confidence a touch much early on.","story":"Picked Bryce on night one as the only woman to choose him; rode out the Day 5 recoupling together and kissed every boy in the paint challenge before locking onto him."},
@@ -32,12 +33,12 @@
     {"id":"vasana","name":"Vasana Montgomery","age":25,"job":"Business owner","home":"Beaverton, Oregon","flag":"🇺🇸","sex":"F","status":"removed","entered":0,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-vasana-en-052826-a39f47.png","color":"#ff4d5e","wants":["—"],"traits":"Originally cast as an OG islander.","strength":"—","crit":"—","story":"Removed from the cast before entering the villa (May 29) after videos surfaced of her using racist language. Never appeared in the villa."}
   ],
   "couples": [
-    {"a":"trinity","b":"bryce","since":"Day 1","len":"6 days","how":"Trinity was the only woman to pick Bryce on night one, making them the first official couple of the season.","events":"Survived the Day 5 recoupling together; Trinity kissed every boy in the Day 6 paint challenge before locking onto Bryce.","e":78,"l":72,"a_":74,"c":80,"overall":77,"strength":"Strong"},
-    {"a":"gabriel","b":"beatriz","since":"Day 5","len":"1 day","how":"Beatriz chose Gabriel at the Day 5 girls' recoupling, leaving Sean single.","events":"Honeymoon glow, but Beatriz already flagged a lack of deep conversation and fears Gabriel will chase a new arrival.","e":58,"l":64,"a_":80,"c":55,"overall":62,"strength":"Testing"},
-    {"a":"sincere","b":"melanie","since":"Day 1","len":"6 days","how":"Both girls wanted Sincere night one; he chose Melanie.","events":"Volatile early arguments, then reconciliation — until Melanie's drawn-out paint-challenge kiss with Corbin reignited Sincere's jealousy on Day 6.","e":60,"l":66,"a_":82,"c":50,"overall":60,"strength":"Rocky"},
-    {"a":"kc","b":"aniya","since":"Day 1","len":"6 days","how":"KC and Aniya were the last two standing on night one and coupled by default.","events":"Comfortable until KC joked he felt 'blessed' by the bombshell arrivals; Aniya shut it down on Day 6.","e":64,"l":70,"a_":68,"c":62,"overall":66,"strength":"Steady-ish"},
-    {"a":"zach","b":"kayda","since":"Day 5","len":"1 day","how":"Bombshell Kayda chose Zach at the Day 5 recoupling after he was left by Kenzie.","events":"Looked the most 'locked in' of the new pairs; Kayda says Zach makes her feel safe and comfortable.","e":70,"l":74,"a_":72,"c":73,"overall":72,"strength":"Strong start"},
-    {"a":"corbin","b":"kenzie","since":"Day 5","len":"1 day","how":"Bombshell Corbin picked Kenzie first at the Day 5 recoupling, ending her couple with Zach.","events":"Corbin gushed that picking her was 'easy'; both came in wanting family and a real future.","e":66,"l":68,"a_":70,"c":64,"overall":67,"strength":"Promising"}
+    {"a":"trinity","b":"bryce","since":"Day 1","len":"8 days","how":"Trinity was the only woman to pick Bryce on night one, making them the first official couple of the season.","events":"The season's steadiest pair — until Day 8, when Bryce told Zach he wanted to pull bombshell Kayda for a chat and 'explore the connection,' the first real wobble in this couple.","e":72,"l":70,"a_":72,"c":74,"overall":72,"strength":"First wobble"},
+    {"a":"gabriel","b":"beatriz","since":"Day 5","len":"3 days","how":"Beatriz chose Gabriel at the Day 5 girls' recoupling, leaving Sean single.","events":"Beatriz's worst fear landed on Day 8: Gabriel admitted he'd chatted with BOTH new bombshells Jen and Sol — and kissed both of them. He told her to her face.","e":42,"l":48,"a_":74,"c":40,"overall":48,"strength":"Cracking"},
+    {"a":"sincere","b":"melanie","since":"Day 1","len":"8 days","how":"Both girls wanted Sincere night one; he chose Melanie.","events":"Still volatile after the paint-challenge fallout. On Day 8 Melanie point-blank asked Sincere if he wanted to explore Sol; he said no, but his body language screamed yes.","e":54,"l":60,"a_":78,"c":44,"overall":55,"strength":"Rocky"},
+    {"a":"kc","b":"aniya","since":"Day 1","len":"8 days","how":"KC and Aniya were the last two standing on night one and coupled by default.","events":"Quietest couple of Day 8 — no new bombshell drama touched them, a relative calm after KC's 'blessed' comment cooled off.","e":65,"l":71,"a_":68,"c":64,"overall":67,"strength":"Steady-ish"},
+    {"a":"zach","b":"kayda","since":"Day 5","len":"3 days","how":"Bombshell Kayda chose Zach at the Day 5 recoupling after he was left by Kenzie.","events":"Looked locked in until Day 8, when Bryce announced he'd pull Kayda for a chat — leaving Zach admitting he was suddenly 'in a weird spot.'","e":62,"l":68,"a_":70,"c":58,"overall":64,"strength":"Under threat"},
+    {"a":"corbin","b":"kenzie","since":"Day 5","len":"3 days","how":"Bombshell Corbin picked Kenzie first at the Day 5 recoupling, ending her couple with Zach.","events":"Tested by bombshell Caleb: Kenzie kissed Caleb in the challenge but told Corbin she was thinking of HIM the whole time — then confronted Melanie for pulling Corbin for a chat.","e":64,"l":66,"a_":68,"c":66,"overall":66,"strength":"Tested but holding"}
   ],
   "timeline": [
     {"day":"Day 1","title":"First Coupling","notes":["6 men, 5 women (Vasana removed pre-villa). Gabriel left single."],"pairs":[
@@ -64,6 +65,12 @@
       {"a":"Sol","b":"villa","cls":"bomb","txt":"Sol enters — eyes Corbin, KC, Sincere"},
       {"a":"Jen","b":"villa","cls":"bomb","txt":"Jen enters — 'here to take a man'"},
       {"a":"Caleb","b":"villa","cls":"bomb","txt":"Caleb enters — meets the girls"}
+    ]},
+    {"day":"Day 8","title":"Bombshells Detonate (vote delayed)","notes":["America's Vote results held to Ep 9 (app issues). No recoupling yet — but the new trio crack open three couples."],"pairs":[
+      {"a":"Gabriel","b":"Jen","cls":"toxic","txt":"Gabriel kisses Jen AND Sol — tells Beatriz"},
+      {"a":"Bryce","b":"Kayda","cls":"toxic","txt":"Bryce pulls Kayda — Zach 'in a weird spot'"},
+      {"a":"Sincere","b":"Sol","cls":"toxic","txt":"Sincere eyes Sol (says no, means yes)"},
+      {"a":"Kenzie","b":"Caleb","cls":"toxic","txt":"Kenzie kisses Caleb — but 'thinking of Corbin'"}
     ]}
   ],
   "drama": [
@@ -77,7 +84,12 @@
     {"ep":6,"type":"Drama","cls":"t-dra","title":"KC's 'blessed' comment","ppl":"KC Chandler, Aniya Harvey","sum":"KC joked he felt 'blessed' by the bombshell arrivals; Aniya bluntly told him it wasn't funny.","out":"Tension in a previously steady couple."},
     {"ep":6,"type":"Bombshell","cls":"t-dra","title":"Triple bombshell storms the slumber party","ppl":"Sol Mýa, Jen Terry, Caleb McDaniel","sum":"Sol, Jen and Caleb crashed the lingerie challenge. Sol singled out Corbin, KC and Sincere; Caleb met the girls.","out":"Honeymoon phase declared over; first public vote teased."},
     {"ep":6,"type":"Vote","cls":"t-rec","title":"First public vote announced","ppl":"The public","sum":"Ariana announced the season's first interactive fan vote via the Love Island app.","out":"Power shifts to viewers — results pending."},
-    {"ep":7,"type":"Vote","cls":"t-rec","title":"First public recoupling vote opens","ppl":"Caleb, Jen, Sol + the public","sum":"Viewers vote to pair the three new bombshells: which girl couples with Caleb, and which boys couple with Jen and Sol. Voting opened 10:30pm ET and ran ~2.5 hours.","out":"Results revealed Thursday Jun 11 (Ep 8) — a recoupling looms."}
+    {"ep":7,"type":"Vote","cls":"t-rec","title":"First public recoupling vote opens","ppl":"Caleb, Jen, Sol + the public","sum":"Viewers vote to pair the three new bombshells: which girl couples with Caleb, and which boys couple with Jen and Sol. Voting opened 10:30pm ET and ran ~2.5 hours.","out":"Results were due Ep 8 but app technical issues forced a delay to Ep 9."},
+    {"ep":8,"type":"Vote","cls":"t-rec","title":"America's Vote results DELAYED","ppl":"The public + production","sum":"The season's first fan-vote reveal — which islanders couple with bombshells Caleb, Jen and Sol — was held back after technical problems with the Love Island app.","out":"Recoupling pushed to Ep 9; couples stay intact one more night."},
+    {"ep":8,"type":"Triangle","cls":"t-dra","title":"Gabriel kisses BOTH Jen and Sol","ppl":"Gabriel, Beatriz, Jen, Sol","sum":"Gabriel chatted up both new bombshells and kissed each of them, then told Beatriz to her face — landing exactly the fear she'd voiced days earlier.","out":"Gabriel & Beatriz crack wide open; her insecurity confirmed."},
+    {"ep":8,"type":"Triangle","cls":"t-dra","title":"Bryce makes a move on Kayda","ppl":"Bryce, Kayda, Zach, Trinity","sum":"Bryce told Zach he wanted to pull Kayda for a chat and explore the connection — the first crack in the rock-solid Trinity+Bryce pair and a direct threat to Zach+Kayda.","out":"Zach admits he's suddenly 'in a weird spot.'"},
+    {"ep":8,"type":"Triangle","cls":"t-dra","title":"Kenzie kisses Caleb, hearts Corbin","ppl":"Kenzie, Caleb, Corbin, Melanie","sum":"Kenzie kissed bombshell Caleb but told Corbin she was thinking of him the whole time — then confronted Melanie for pulling Corbin aside for a chat.","out":"Corbin+Kenzie tested but holding; Kenzie vs Melanie tension."},
+    {"ep":8,"type":"Drama","cls":"t-dra","title":"Melanie pushes Sincere toward Sol","ppl":"Melanie, Sincere, Sol","sum":"Melanie asked Sincere outright if he wanted to explore Sol. He said no — but everything about him said yes.","out":"Sincere & Melanie's rocky streak deepens."}
   ],
   "log": [
     {"ep":"Ep 1","date":"Jun 2, 2026","day":"Day 1","rows":[
@@ -108,25 +120,30 @@
     {"ep":"Ep 7","date":"Jun 9, 2026","day":"Day 7","rows":[
       {"t":"rec","label":"Vote","tx":"First public recoupling vote opens — fans pick partners for bombshells Caleb, Jen & Sol."},
       {"t":"dra","label":"Drama","tx":"The three bombshells stir up the freshly recoupled villa; couples brace for the results."},
-      {"t":"rec","label":"Pending","tx":"Vote results revealed Thursday Jun 11 (Ep 8) — a recoupling is coming."}
+      {"t":"rec","label":"Pending","tx":"Vote results were due Thursday Jun 11 (Ep 8) — a recoupling looms."}
+    ]},
+    {"ep":"Ep 8","date":"Jun 11, 2026","day":"Day 8","rows":[
+      {"t":"rec","label":"Vote Delayed","tx":"America's Vote results held to Ep 9 after Love Island app technical issues — no recoupling tonight."},
+      {"t":"dra","label":"Drama","tx":"Gabriel kisses both Jen & Sol and tells Beatriz; Bryce moves to pull Kayda, rattling Zach."},
+      {"t":"dra","label":"Drama","tx":"Kenzie kisses Caleb but says she was thinking of Corbin, then confronts Melanie; Melanie nudges Sincere toward Sol."}
     ]}
   ],
   "history": {
-    "trinity":[{"d":"Day 1","c":"<b>Enters villa.</b> Only woman to pick Bryce — first couple of the season."},{"d":"Day 5","c":"Stays with Bryce at the recoupling."},{"d":"Day 6","c":"Kisses every boy in the paint challenge before locking onto Bryce."}],
-    "bryce":[{"d":"Day 1","c":"<b>Enters villa.</b> Chosen by Trinity."},{"d":"Day 5","c":"Survives recoupling with Trinity."},{"d":"Day 6","c":"Reflects on Sean's exit; reaffirms with Trinity."}],
-    "gabriel":[{"d":"Day 1","c":"<b>Enters villa.</b> Left single (odd man out)."},{"d":"Day 5","c":"<b>Chosen by Beatriz</b> at the recoupling — first couple."},{"d":"Day 6","c":"Reassures Beatriz in Portuguese/Spanish; she flags a lack of deep talks."}],
-    "beatriz":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Sean."},{"d":"Day 5","c":"<b>Recouples with Gabriel</b>, leaving Sean single."},{"d":"Day 6","c":"Voices fear Gabriel may chase a new arrival."}],
-    "sincere":[{"d":"Day 1","c":"<b>Enters villa.</b> Wanted by Aniya & Melanie; picks Melanie."},{"d":"Day 3","c":"Volatile arguments with Melanie, then reconcile."},{"d":"Day 5","c":"Stays with Melanie."},{"d":"Day 6","c":"Furious over Melanie's long kiss with Corbin in the challenge."}],
-    "melanie":[{"d":"Day 1","c":"<b>Enters villa.</b> Chosen by Sincere over Aniya."},{"d":"Day 3","c":"On-and-off conflict with Sincere."},{"d":"Day 5","c":"Recouples with Sincere (stays)."},{"d":"Day 6","c":"Drawn-out paint-challenge kiss with Corbin sparks drama."}],
-    "kc":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Aniya (last two standing)."},{"d":"Day 5","c":"Stays with Aniya."},{"d":"Day 6","c":"'Blessed' bombshell joke upsets Aniya; Sol names him a target."}],
-    "aniya":[{"d":"Day 1","c":"<b>Enters villa.</b> Wanted Sincere; ends up with KC."},{"d":"Day 5","c":"Stays with KC."},{"d":"Day 6","c":"Shuts down KC's bombshell comment."}],
-    "zach":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Kenzie."},{"d":"Day 5","c":"<b>Loses Kenzie to Corbin</b>; recouples with bombshell Kayda."},{"d":"Day 6","c":"Looks 'locked in' with Kayda."}],
-    "kayda":[{"d":"Premiere wk","c":"<b>Enters as a bombshell.</b>"},{"d":"Day 5","c":"<b>Chooses Zach</b> at the recoupling."},{"d":"Day 6","c":"Says Zach makes her feel safe and comfortable."}],
-    "corbin":[{"d":"Premiere wk","c":"<b>Enters as a bombshell</b> during the first challenge."},{"d":"Day 5","c":"<b>Picks Kenzie first</b>, breaking up Zach & Kenzie."},{"d":"Day 6","c":"Pulled into Melanie's paint-challenge kiss; gushes over Kenzie."}],
-    "kenzie":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Zach."},{"d":"Day 5","c":"<b>Chosen by bombshell Corbin</b>, ending her couple with Zach."},{"d":"Day 6","c":"Settling in with Corbin."}],
-    "sol":[{"d":"Day 6","c":"<b>Enters as a bombshell.</b> Singles out Corbin, KC & Sincere."}],
-    "jen":[{"d":"Day 6","c":"<b>Enters as a bombshell.</b> 'Here to take one of their men.'"}],
-    "caleb":[{"d":"Day 6","c":"<b>Enters as the night's third bombshell.</b> Meets the girls right away."}],
+    "trinity":[{"d":"Day 1","c":"<b>Enters villa.</b> Only woman to pick Bryce — first couple of the season."},{"d":"Day 5","c":"Stays with Bryce at the recoupling."},{"d":"Day 6","c":"Kisses every boy in the paint challenge before locking onto Bryce."},{"d":"Day 8","c":"Faces her first scare as Bryce talks about exploring bombshell-adjacent Kayda."}],
+    "bryce":[{"d":"Day 1","c":"<b>Enters villa.</b> Chosen by Trinity."},{"d":"Day 5","c":"Survives recoupling with Trinity."},{"d":"Day 6","c":"Reflects on Sean's exit; reaffirms with Trinity."},{"d":"Day 8","c":"<b>Tells Zach he'll pull Kayda</b> to explore the connection — his first wandering eye."}],
+    "gabriel":[{"d":"Day 1","c":"<b>Enters villa.</b> Left single (odd man out)."},{"d":"Day 5","c":"<b>Chosen by Beatriz</b> at the recoupling — first couple."},{"d":"Day 6","c":"Reassures Beatriz in Portuguese/Spanish; she flags a lack of deep talks."},{"d":"Day 8","c":"<b>Kisses BOTH Jen and Sol</b>, then admits it to Beatriz."}],
+    "beatriz":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Sean."},{"d":"Day 5","c":"<b>Recouples with Gabriel</b>, leaving Sean single."},{"d":"Day 6","c":"Voices fear Gabriel may chase a new arrival."},{"d":"Day 8","c":"Her fear comes true — Gabriel tells her he kissed both new bombshells."}],
+    "sincere":[{"d":"Day 1","c":"<b>Enters villa.</b> Wanted by Aniya & Melanie; picks Melanie."},{"d":"Day 3","c":"Volatile arguments with Melanie, then reconcile."},{"d":"Day 5","c":"Stays with Melanie."},{"d":"Day 6","c":"Furious over Melanie's long kiss with Corbin in the challenge."},{"d":"Day 8","c":"Asked by Melanie if he wants to explore Sol — says no, but clearly tempted."}],
+    "melanie":[{"d":"Day 1","c":"<b>Enters villa.</b> Chosen by Sincere over Aniya."},{"d":"Day 3","c":"On-and-off conflict with Sincere."},{"d":"Day 5","c":"Recouples with Sincere (stays)."},{"d":"Day 6","c":"Drawn-out paint-challenge kiss with Corbin sparks drama."},{"d":"Day 8","c":"Pulls Corbin for a chat (angering Kenzie); tests Sincere over Sol."}],
+    "kc":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Aniya (last two standing)."},{"d":"Day 5","c":"Stays with Aniya."},{"d":"Day 6","c":"'Blessed' bombshell joke upsets Aniya; Sol names him a target."},{"d":"Day 8","c":"Stays out of the bombshell chaos; quietest of the boys tonight."}],
+    "aniya":[{"d":"Day 1","c":"<b>Enters villa.</b> Wanted Sincere; ends up with KC."},{"d":"Day 5","c":"Stays with KC."},{"d":"Day 6","c":"Shuts down KC's bombshell comment."},{"d":"Day 8","c":"Couple with KC holds steady while others crack."}],
+    "zach":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Kenzie."},{"d":"Day 5","c":"<b>Loses Kenzie to Corbin</b>; recouples with bombshell Kayda."},{"d":"Day 6","c":"Looks 'locked in' with Kayda."},{"d":"Day 8","c":"Learns Bryce wants to pull Kayda — admits he's 'in a weird spot.'"}],
+    "kayda":[{"d":"Premiere wk","c":"<b>Enters as a bombshell.</b>"},{"d":"Day 5","c":"<b>Chooses Zach</b> at the recoupling."},{"d":"Day 6","c":"Says Zach makes her feel safe and comfortable."},{"d":"Day 8","c":"Becomes Bryce's target — Zach's security suddenly shaky."}],
+    "corbin":[{"d":"Premiere wk","c":"<b>Enters as a bombshell</b> during the first challenge."},{"d":"Day 5","c":"<b>Picks Kenzie first</b>, breaking up Zach & Kenzie."},{"d":"Day 6","c":"Pulled into Melanie's paint-challenge kiss; gushes over Kenzie."},{"d":"Day 8","c":"Reassured by Kenzie (she 'thought of him' kissing Caleb); pulled by Melanie."}],
+    "kenzie":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Zach."},{"d":"Day 5","c":"<b>Chosen by bombshell Corbin</b>, ending her couple with Zach."},{"d":"Day 6","c":"Settling in with Corbin."},{"d":"Day 8","c":"<b>Kisses Caleb</b> but tells Corbin she thought of him; confronts Melanie."}],
+    "sol":[{"d":"Day 6","c":"<b>Enters as a bombshell.</b> Singles out Corbin, KC & Sincere."},{"d":"Day 8","c":"Kissed by Gabriel; circled by a tempted Sincere."}],
+    "jen":[{"d":"Day 6","c":"<b>Enters as a bombshell.</b> 'Here to take one of their men.'"},{"d":"Day 8","c":"Kissed by Gabriel as she works her way into the villa."}],
+    "caleb":[{"d":"Day 6","c":"<b>Enters as the night's third bombshell.</b> Meets the girls right away."},{"d":"Day 8","c":"Kisses Kenzie in the challenge — but she says her heart's with Corbin."}],
     "sean":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Beatriz."},{"d":"Day 5","c":"Left single after Beatriz picks Gabriel."},{"d":"Day 6","c":"<b>Dumped from the villa</b> and sent home."}],
     "vasana":[{"d":"Pre-villa","c":"<b>Removed from the cast</b> before entering after racist videos surfaced."}]
   },
@@ -142,12 +159,11 @@
     {"a":"sincere","b":"aniya","t":"former"},
     {"a":"corbin","b":"melanie","t":"rivalry"},
     {"a":"sincere","b":"corbin","t":"rivalry"},
-    {"a":"sol","b":"corbin","t":"bomb"},
-    {"a":"sol","b":"kc","t":"bomb"},
-    {"a":"sol","b":"sincere","t":"bomb"},
-    {"a":"jen","b":"kc","t":"bomb"},
-    {"a":"jen","b":"bryce","t":"bomb"},
-    {"a":"caleb","b":"trinity","t":"bomb"},
-    {"a":"caleb","b":"aniya","t":"bomb"}
+    {"a":"kenzie","b":"melanie","t":"rivalry"},
+    {"a":"gabriel","b":"jen","t":"bomb"},
+    {"a":"gabriel","b":"sol","t":"bomb"},
+    {"a":"sincere","b":"sol","t":"bomb"},
+    {"a":"kenzie","b":"caleb","t":"bomb"},
+    {"a":"bryce","b":"kayda","t":"bomb"}
   ]
 }
