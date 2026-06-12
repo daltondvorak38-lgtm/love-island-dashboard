@@ -33,9 +33,9 @@
     {"id":"vasana","name":"Vasana Montgomery","age":25,"job":"Business owner","home":"Beaverton, Oregon","flag":"🇺🇸","sex":"F","status":"removed","entered":0,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-vasana-en-052826-a39f47.png","color":"#ff4d5e","wants":["—"],"traits":"Originally cast as an OG islander.","strength":"—","crit":"—","story":"Removed from the cast before entering the villa (May 29) after videos surfaced of her using racist language. Never appeared in the villa."}
   ],
   "couples": [
-    {"a":"trinity","b":"bryce","since":"Day 1","len":"8 days","how":"Trinity was the only woman to pick Bryce on night one, making them the first official couple of the season.","events":"The season's steadiest pair — until Day 8, when Bryce told Zach he wanted to pull bombshell Kayda for a chat and 'explore the connection,' the first real wobble in this couple.","e":72,"l":70,"a_":72,"c":74,"overall":72,"strength":"First wobble"},
+    {"a":"trinity","b":"bryce","since":"Day 1","len":"8 days","how":"Trinity was the only woman to pick Bryce on night one, making them the first official couple of the season.","events":"The season's steadiest pair — until Day 8, when Bryce told Zach he wanted to pull bombshell Kayda and, asked point-blank if he was happy with Trinity, admitted he 'really' wasn't. Trinity has no idea yet.","e":58,"l":64,"a_":68,"c":58,"overall":60,"strength":"Quietly wavering"},
     {"a":"gabriel","b":"beatriz","since":"Day 5","len":"3 days","how":"Beatriz chose Gabriel at the Day 5 girls' recoupling, leaving Sean single.","events":"Beatriz's worst fear landed on Day 8: Gabriel admitted he'd chatted with BOTH new bombshells Jen and Sol — and kissed both of them. He told her to her face.","e":42,"l":48,"a_":74,"c":40,"overall":48,"strength":"Cracking"},
-    {"a":"sincere","b":"melanie","since":"Day 1","len":"8 days","how":"Both girls wanted Sincere night one; he chose Melanie.","events":"Still volatile after the paint-challenge fallout. On Day 8 Melanie point-blank asked Sincere if he wanted to explore Sol; he said no, but his body language screamed yes.","e":54,"l":60,"a_":78,"c":44,"overall":55,"strength":"Rocky"},
+    {"a":"sincere","b":"melanie","since":"Day 1","len":"8 days","how":"Both girls wanted Sincere night one; he chose Melanie.","events":"Imploding on Day 8: Sol said Sincere is her favorite, Melanie asked if he wanted to explore Sol (he said no but meant yes), and Melanie — convinced he likes Sol better — told him he hurt her and she's 'not going to f--- with him anymore.'","e":40,"l":48,"a_":70,"c":34,"overall":44,"strength":"Imploding"},
     {"a":"kc","b":"aniya","since":"Day 1","len":"8 days","how":"KC and Aniya were the last two standing on night one and coupled by default.","events":"Quietest couple of Day 8 — no new bombshell drama touched them, a relative calm after KC's 'blessed' comment cooled off.","e":65,"l":71,"a_":68,"c":64,"overall":67,"strength":"Steady-ish"},
     {"a":"zach","b":"kayda","since":"Day 5","len":"3 days","how":"Bombshell Kayda chose Zach at the Day 5 recoupling after he was left by Kenzie.","events":"Looked locked in until Day 8, when Bryce announced he'd pull Kayda for a chat — leaving Zach admitting he was suddenly 'in a weird spot.'","e":62,"l":68,"a_":70,"c":58,"overall":64,"strength":"Under threat"},
     {"a":"corbin","b":"kenzie","since":"Day 5","len":"3 days","how":"Bombshell Corbin picked Kenzie first at the Day 5 recoupling, ending her couple with Zach.","events":"Tested by bombshell Caleb: Kenzie kissed Caleb in the challenge but told Corbin she was thinking of HIM the whole time — then confronted Melanie for pulling Corbin for a chat.","e":64,"l":66,"a_":68,"c":66,"overall":66,"strength":"Tested but holding"}
@@ -157,13 +157,14 @@
     {"a":"sean","b":"beatriz","t":"former"},
     {"a":"zach","b":"kenzie","t":"former"},
     {"a":"sincere","b":"aniya","t":"former"},
-    {"a":"corbin","b":"melanie","t":"rivalry"},
     {"a":"sincere","b":"corbin","t":"rivalry"},
     {"a":"kenzie","b":"melanie","t":"rivalry"},
+    {"a":"bryce","b":"zach","t":"rivalry"},
     {"a":"gabriel","b":"jen","t":"bomb"},
     {"a":"gabriel","b":"sol","t":"bomb"},
     {"a":"sincere","b":"sol","t":"bomb"},
     {"a":"kenzie","b":"caleb","t":"bomb"},
-    {"a":"bryce","b":"kayda","t":"bomb"}
+    {"a":"bryce","b":"kayda","t":"bomb"},
+    {"a":"melanie","b":"corbin","t":"bomb"}
   ]
 }
