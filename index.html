@@ -22,19 +22,53 @@ a{color:inherit}
 ::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
 
 /* NAV */
-.nav{position:sticky;top:0;z-index:50;background:rgba(12,11,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:10px 16px;overflow-x:auto;scrollbar-width:none}
+.nav{position:sticky;top:0;z-index:50;background:rgba(12,11,20,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-top{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 16px 6px}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:2px 16px 10px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.brand{font-weight:800;letter-spacing:.5px;font-size:15px;white-space:nowrap;margin-right:8px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand{font-weight:800;letter-spacing:.5px;font-size:15px;white-space:nowrap;flex-shrink:0;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nav a.tab{font-size:12.5px;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px;white-space:nowrap;transition:.15s}
 .nav a.tab:hover{color:var(--txt);background:var(--card)}
 
+/* SEARCH */
+.search-wrap{position:relative;flex:1;max-width:520px}
+.search-ic{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:13px;opacity:.7;pointer-events:none}
+#searchInput{width:100%;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 12px 9px 34px;color:var(--txt);font-size:13px;font-family:inherit;outline:none;transition:.15s}
+#searchInput:focus{border-color:var(--coral)}
+#searchInput::placeholder{color:var(--dim)}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--bg2);border:1px solid var(--line);border-radius:12px;display:none;z-index:60;box-shadow:0 12px 30px rgba(0,0,0,.5);max-height:360px;overflow-y:auto}
+.search-results.show{display:block}
+.sr-item{display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--line);transition:.12s}
+.sr-item:last-child{border-bottom:0}
+.sr-item:hover{background:var(--card)}
+.sr-img{width:36px;height:36px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--card)}
+.sr-img img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.sr-img .avatar-fb{font-size:14px}
+.sr-name{font-size:13px;font-weight:700}
+.sr-sub{font-size:11px;color:var(--muted)}
+.sr-badge{margin-left:auto;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.sr-empty{padding:14px;text-align:center;font-size:12px;color:var(--muted)}
+.sr-group{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--coral);padding:9px 12px 4px;background:var(--bg2);border-bottom:1px solid var(--line)}
+.sr-couple-imgs{display:flex;flex-shrink:0;align-items:center}
+.sr-cimg{width:30px;height:30px;border-radius:50%;overflow:hidden;border:2px solid var(--bg2);background:var(--card)}
+.sr-cimg:last-child{margin-left:-10px}
+.sr-cimg img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.sr-cimg .avatar-fb{font-size:11px}
+.sr-ep{width:36px;height:36px;border-radius:8px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--teal);flex-shrink:0;text-align:center;line-height:1.1}
+.sr-badge-type{background:var(--card);color:var(--muted)}
+@keyframes flashcard{0%,100%{box-shadow:0 0 0 0 rgba(255,93,126,0)}18%{box-shadow:0 0 0 2px var(--coral)}}
+.flash{animation:flashcard 1.5s ease}
+
 .wrap{max-width:1280px;margin:0 auto;padding:0 16px 80px}
 section{padding-top:46px;scroll-margin-top:60px}
-.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;flex-wrap:wrap;position:relative;cursor:pointer;user-select:none;padding-right:30px}
 .sec-head h2{font-size:22px;font-weight:800;letter-spacing:.3px}
 .sec-head .num{font-size:12px;font-weight:700;color:var(--coral);background:rgba(255,93,126,.12);padding:3px 8px;border-radius:20px}
 .sec-head p{font-size:13px;color:var(--muted);flex-basis:100%}
+.sec-chev{position:absolute;right:2px;top:3px;font-size:16px;color:var(--muted);transition:.2s;line-height:1}
+.sec-head:hover .sec-chev{color:var(--coral)}
+section.collapsed .sec-chev{transform:rotate(-90deg)}
+section.collapsed > :not(.sec-head){display:none}
 
 /* HERO */
 .hero{padding-top:34px}
@@ -59,7 +93,7 @@ section{padding-top:46px;scroll-margin-top:60px}
 
 /* CARDS GRID */
 .grid{display:grid;gap:14px}
-.dir-grid{grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}
+.dir-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
 .icard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:.18s;position:relative}
 .icard:hover{transform:translateY(-4px);border-color:var(--coral);box-shadow:0 12px 30px -12px rgba(255,93,126,.4)}
 .icard .ph{position:relative;aspect-ratio:1/1.08;overflow:hidden;background:var(--card2)}
@@ -70,10 +104,10 @@ section{padding-top:46px;scroll-margin-top:60px}
 .b-bomb{background:rgba(255,159,67,.9);color:#3a2200}
 .b-dump{background:rgba(140,134,170,.85);color:#1a172a}
 .b-removed{background:rgba(255,77,94,.85);color:#2a0006}
-.icard .meta{padding:10px 12px 12px}
-.icard .meta h3{font-size:15px;font-weight:800;display:flex;align-items:center;gap:6px}
-.icard .meta .role{font-size:11.5px;color:var(--muted);margin-top:2px}
-.icard .meta .loc{font-size:11px;color:var(--dim);margin-top:3px}
+.icard .meta{padding:9px 10px 11px}
+.icard .meta h3{font-size:13.5px;font-weight:800;display:flex;align-items:center;gap:5px}
+.icard .meta .role{font-size:11px;color:var(--muted);margin-top:2px}
+.icard .meta .loc{font-size:10.5px;color:var(--dim);margin-top:3px}
 .flag{font-size:11px}
 .heart-mini{font-size:10px;color:var(--coral)}
 
@@ -105,6 +139,17 @@ section{padding-top:46px;scroll-margin-top:60px}
 .overall .lbl{font-size:12px;font-weight:700;color:var(--muted)}
 .overall .score{font-size:30px;font-weight:900}
 .tag-strength{font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px}
+/* collapsible couple */
+.cpl-head{display:flex;flex-direction:column;gap:12px;cursor:pointer}
+.cpl-collapse{display:flex;flex-direction:column;gap:12px}
+.couple.collapsed .cpl-collapse{display:none}
+.cpl-overall{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px dashed var(--line);padding-top:10px}
+.cpl-overall .lbl{font-size:12px;font-weight:700;color:var(--muted)}
+.cpl-overall-right{display:flex;align-items:center;gap:10px}
+.cpl-overall .score{font-size:30px;font-weight:900;line-height:1}
+.cpl-chev{font-size:15px;color:var(--muted);transition:.2s;margin-left:2px}
+.cpl-head:hover .cpl-chev{color:var(--coral)}
+.couple.collapsed .cpl-chev{transform:rotate(-90deg)}
 
 /* TIMELINE / history map */
 .tl{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px}
@@ -239,17 +284,25 @@ table.mx td.self{background:var(--bg2)!important;color:var(--dim)}
 </head>
 <body>
 
-<nav class="nav"><div class="nav-inner">
-  <span class="brand">🌴 VILLA INTEL · S8</span>
-  <a class="tab" href="#status">Status</a>
-  <a class="tab" href="#directory">Islanders</a>
-  <a class="tab" href="#couples">Couples</a>
-  <a class="tab" href="#history">History Map</a>
-  <a class="tab" href="#drama">Drama</a>
-  <a class="tab" href="#matrix">Compatibility</a>
-  <a class="tab" href="#network">Network</a>
-  <a class="tab" href="#log">Episode Log</a>
-</div></nav>
+<nav class="nav">
+  <div class="nav-top">
+    <span class="brand">🌴 VILLA INTEL · S8</span>
+    <div class="search-wrap">
+      <span class="search-ic">🔍</span>
+      <input id="searchInput" type="text" placeholder="Search islanders by name, job, or hometown…" autocomplete="off">
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+  <div class="nav-inner">
+    <a class="tab" href="#directory">Islanders</a>
+    <a class="tab" href="#couples">Couples</a>
+    <a class="tab" href="#history">History Map</a>
+    <a class="tab" href="#drama">Drama</a>
+    <a class="tab" href="#matrix">Compatibility</a>
+    <a class="tab" href="#network">Network</a>
+    <a class="tab" href="#log">Episode Log</a>
+  </div>
+</nav>
 
 <div class="wrap">
 
@@ -270,7 +323,6 @@ table.mx td.self{background:var(--bg2)!important;color:var(--dim)}
     </div>
     <button class="ub-btn" id="ubBtn" onclick="runUpdate()">⟳ Sync now</button>
   </div>
-  <div class="stats" id="statGrid"></div>
 </section>
 
 <!-- DIRECTORY -->
@@ -357,9 +409,26 @@ table.mx td.self{background:var(--bg2)!important;color:var(--dim)}
 <!-- MODAL -->
 <div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
 
-<script>
+<script type="module">
 /* ============================================================
-   DATA LAYER  — edit here to update the dashboard each episode
+   LIVE DATA BOOTSTRAP — fetches data.json (auto-generated by the
+   GitHub Action) before rendering. Falls back to the baked-in
+   defaults below if data.json is missing or unreachable
+   (e.g. when the file is opened directly from file://).
+   ============================================================ */
+async function loadLiveData(){
+  try{
+    const r=await fetch("data.json",{cache:"no-store"});
+    if(!r.ok)return null;
+    const j=await r.json();
+    return (j&&typeof j==="object")?j:null;
+  }catch(e){console.warn("Live data unavailable — using baked-in defaults:",e.message);return null;}
+}
+const LIVE = await loadLiveData();
+
+/* ============================================================
+   DATA LAYER  — baked-in defaults / fallback. The GitHub Action
+   overrides each of these via data.json on every run.
    ============================================================ */
 const STATUS = {
   episode: 7, day: 7, activeIslanders: 15, activeCouples: 6,
@@ -369,6 +438,7 @@ const STATUS = {
   bombshells: ["Sol Mýa","Jen Terry","Caleb McDaniel"],
   newArrivals: ["Sol Mýa","Jen Terry","Caleb McDaniel"]
 };
+if(LIVE&&LIVE.status)Object.assign(STATUS,LIVE.status);
 /* ============================================================
    SEASON CONFIG — change this ONE line for next season
    ============================================================ */
@@ -513,7 +583,7 @@ async function wikiSync(isManual){
 }
 
 // status: active | bombshell | dumped | removed
-const ISLANDERS = [
+let ISLANDERS = (LIVE&&LIVE.islanders) || [
   {id:"trinity",name:"Trinity Tatum",age:22,job:"Model",home:"Newport News, Virginia",flag:"🇺🇸",sex:"F",status:"active",entered:1,
    photo:"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-trinity-en-052826-5d6dd6.png",
    color:"#ff5d7e",
@@ -648,7 +718,7 @@ const ISLANDERS = [
 ];
 
 // COUPLES (current). person ids + scores (editorial)
-const COUPLES = [
+let COUPLES = (LIVE&&LIVE.couples) || [
   {a:"trinity",b:"bryce",since:"Day 1",len:"6 days",how:"Trinity was the only woman to pick Bryce on night one, making them the first official couple of the season.",events:"Survived the Day 5 recoupling together; Trinity kissed every boy in the Day 6 paint challenge before locking onto Bryce.",
    e:78,l:72,a_:74,c:80,overall:77,strength:"Strong"},
   {a:"gabriel",b:"beatriz",since:"Day 5",len:"1 day",how:"Beatriz chose Gabriel at the Day 5 girls' recoupling, leaving Sean single.",events:"Honeymoon glow, but Beatriz already flagged a lack of deep conversation and fears Gabriel will chase a new arrival.",
@@ -664,7 +734,7 @@ const COUPLES = [
 ];
 
 // timeline columns (history map)
-const TIMELINE = [
+let TIMELINE = (LIVE&&LIVE.timeline) || [
   {day:"Day 1", title:"First Coupling",
    notes:["6 men, 5 women (Vasana removed pre-villa). Gabriel left single."],
    pairs:[
@@ -701,7 +771,7 @@ const TIMELINE = [
 ];
 
 // DRAMA events
-const DRAMA = [
+let DRAMA = (LIVE&&LIVE.drama) || [
   {ep:1,type:"Coupling",cls:"t-cpl",title:"Five couples form on night one",ppl:"All original islanders",
    sum:"A doors-and-questions game set the first five couples. Gabriel was the odd man out, left single.",out:"First couples locked: Trinity+Bryce, Sean+Beatriz, Sincere+Melanie, Zach+Kenzie, KC+Aniya."},
   {ep:1,type:"Removal",cls:"t-dmp",title:"Vasana Montgomery removed pre-villa",ppl:"Vasana Montgomery",
@@ -727,7 +797,7 @@ const DRAMA = [
 ];
 
 // EPISODE LOG (source of truth)
-const LOG = [
+let LOG = (LIVE&&LIVE.log) || [
   {ep:"Ep 1",date:"Jun 2, 2026",day:"Day 1",rows:[
     {t:"arr",label:"Arrivals",tx:"11 original islanders enter (Vasana removed pre-villa)."},
     {t:"cpl",label:"New Couples",tx:"Trinity+Bryce, Sean+Beatriz, Sincere+Melanie, Zach+Kenzie, KC+Aniya."},
@@ -761,7 +831,7 @@ const LOG = [
 ];
 
 // individual dating-history timelines (id -> [{d,c}])
-const HISTORY = {
+let HISTORY = (LIVE&&LIVE.history) || {
   trinity:[{d:"Day 1",c:"<b>Enters villa.</b> Only woman to pick Bryce — first couple of the season."},{d:"Day 5",c:"Stays with Bryce at the recoupling."},{d:"Day 6",c:"Kisses every boy in the paint challenge before locking onto Bryce."}],
   bryce:[{d:"Day 1",c:"<b>Enters villa.</b> Chosen by Trinity."},{d:"Day 5",c:"Survives recoupling with Trinity."},{d:"Day 6",c:"Reflects on Sean's exit; reaffirms with Trinity."}],
   gabriel:[{d:"Day 1",c:"<b>Enters villa.</b> Left single (odd man out)."},{d:"Day 5",c:"<b>Chosen by Beatriz</b> at the recoupling — first couple."},{d:"Day 6",c:"Reassures Beatriz in Portuguese/Spanish; she flags a lack of deep talks."}],
@@ -798,33 +868,38 @@ renderStatGrid();
 renderDirGrid();
 
 // COUPLES
-$("#cplGrid").innerHTML=COUPLES.map(c=>{
+$("#cplGrid").innerHTML=COUPLES.map((c,ci)=>{
   const A=byId(c.a),B=byId(c.b);
   const sc=v=>`<div class="meter"><span class="ml">${v[0]}</span><div class="mbar"><div class="mfill" style="width:${v[1]}%"></div></div><span class="mv">${v[1]}</span></div>`;
   const stCol=c.overall>=73?'var(--green)':c.overall>=63?'var(--gold)':'var(--orange)';
-  return `<div class="couple">
-    <div class="cpl-top">
-      <div class="cpl-person" onclick="openProfile('${A.id}')"><div class="cpl-img">${imgTag(A)}</div><span class="nm">${A.name.split(" ")[0]}</span><span class="ag">${A.age}</span></div>
-      <div class="cpl-link">⇄</div>
-      <div class="cpl-person" onclick="openProfile('${B.id}')"><div class="cpl-img">${imgTag(B)}</div><span class="nm">${B.name.split(" ")[0]}</span><span class="ag">${B.age}</span></div>
+  return `<div class="couple collapsed" id="cpl-${ci}">
+    <div class="cpl-head" onclick="toggleCouple(this)">
+      <div class="cpl-top">
+        <div class="cpl-person" onclick="event.stopPropagation();openProfile('${A.id}')"><div class="cpl-img">${imgTag(A)}</div><span class="nm">${A.name.split(" ")[0]}</span><span class="ag">${A.age}</span></div>
+        <div class="cpl-link">⇄</div>
+        <div class="cpl-person" onclick="event.stopPropagation();openProfile('${B.id}')"><div class="cpl-img">${imgTag(B)}</div><span class="nm">${B.name.split(" ")[0]}</span><span class="ag">${B.age}</span></div>
+      </div>
+      <div class="cpl-overall">
+        <span class="lbl">Overall compatibility <span class="est">· est.</span></span>
+        <span class="cpl-overall-right">
+          <span class="tag-strength" style="background:${stCol}22;color:${stCol}">${c.strength}</span>
+          <span class="score" style="color:${stCol}">${c.overall}</span>
+          <span class="cpl-chev">▾</span>
+        </span>
+      </div>
     </div>
-    <div class="cpl-wants">
-      <div class="w"><h5>${A.name.split(" ")[0]} wants</h5><ul>${A.wants.slice(0,3).map(w=>`<li>${w}</li>`).join("")}</ul></div>
-      <div class="w"><h5>${B.name.split(" ")[0]} wants</h5><ul>${B.wants.slice(0,3).map(w=>`<li>${w}</li>`).join("")}</ul></div>
-    </div>
-    <div class="cpl-sum">
-      <b>How they got together:</b> ${c.how}<br>
-      <b>Since:</b> ${c.since} (${c.len}) &nbsp; <b>Major events:</b> ${c.events}
-    </div>
-    <div class="meter-wrap">
-      ${sc(["Emotional",c.e])}${sc(["Lifestyle",c.l])}${sc(["Attraction",c.a_])}${sc(["Communication",c.c])}
-    </div>
-    <div class="overall">
-      <span class="lbl">Overall compatibility <span class="est">· est.</span></span>
-      <span style="display:flex;align-items:center;gap:10px">
-        <span class="tag-strength" style="background:${stCol}22;color:${stCol}">${c.strength}</span>
-        <span class="score" style="color:${stCol}">${c.overall}</span>
-      </span>
+    <div class="cpl-collapse">
+      <div class="cpl-wants">
+        <div class="w"><h5>${A.name.split(" ")[0]} wants</h5><ul>${A.wants.slice(0,3).map(w=>`<li>${w}</li>`).join("")}</ul></div>
+        <div class="w"><h5>${B.name.split(" ")[0]} wants</h5><ul>${B.wants.slice(0,3).map(w=>`<li>${w}</li>`).join("")}</ul></div>
+      </div>
+      <div class="cpl-sum">
+        <b>How they got together:</b> ${c.how}<br>
+        <b>Since:</b> ${c.since} (${c.len}) &nbsp; <b>Major events:</b> ${c.events}
+      </div>
+      <div class="meter-wrap">
+        ${sc(["Emotional",c.e])}${sc(["Lifestyle",c.l])}${sc(["Attraction",c.a_])}${sc(["Communication",c.c])}
+      </div>
     </div>
   </div>`;
 }).join("");
@@ -847,7 +922,7 @@ function renderDrama(){
   let list=DRAMA.filter(d=>dramaFilter==="All"||d.type===dramaFilter);
   list=[...list].sort((a,b)=>dramaSort==="ep"?a.ep-b.ep:b.ep-a.ep);
   $("#dramaList").innerHTML=list.map(d=>`
-    <div class="devent">
+    <div class="devent" data-didx="${DRAMA.indexOf(d)}">
       <div class="ep"><div class="e">${d.ep}</div><div class="l">Ep</div></div>
       <div class="body">
         <h4>${d.title}</h4>
@@ -933,7 +1008,7 @@ $("#logBox").innerHTML=[...LOG].reverse().map(l=>`
    ============================================================ */
 const NET_NODES=ISLANDERS.filter(i=>i.status!=="removed"); // include dumped (Sean) crossed out
 // edges: type current|former|bomb|rivalry
-const EDGES=[
+let EDGES=(LIVE&&LIVE.edges) || [
   {a:"trinity",b:"bryce",t:"current"},
   {a:"gabriel",b:"beatriz",t:"current"},
   {a:"sincere",b:"melanie",t:"current"},
@@ -1065,6 +1140,89 @@ function openProfile(id){
 function closeModal(){$("#modal").classList.remove("open");document.body.style.overflow="";}
 $("#modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+/* ============================================================
+   UI: collapsible sections, collapsible couples, islander search
+   ============================================================ */
+// Collapsible section headers (adds a chevron + click-to-toggle)
+$$(".sec-head").forEach(h=>{
+  const chev=document.createElement("span");
+  chev.className="sec-chev";chev.textContent="▾";
+  h.appendChild(chev);
+  h.addEventListener("click",()=>h.closest("section").classList.toggle("collapsed"));
+});
+// Collapsible couple cards
+function toggleCouple(el){el.closest(".couple").classList.toggle("collapsed");}
+window.toggleCouple=toggleCouple;
+
+// Search — islanders, couples, and drama/events
+const searchInput=$("#searchInput"),searchResults=$("#searchResults");
+function runSearch(){
+  const q=searchInput.value.trim().toLowerCase();
+  if(!q){searchResults.classList.remove("show");searchResults.innerHTML="";return;}
+  const isl=ISLANDERS.filter(p=>
+    p.name.toLowerCase().includes(q)||p.job.toLowerCase().includes(q)||p.home.toLowerCase().includes(q)
+  ).slice(0,6);
+  const cpl=COUPLES.map((c,i)=>({c,i})).filter(({c})=>{
+    const A=byId(c.a),B=byId(c.b);
+    return A.name.toLowerCase().includes(q)||B.name.toLowerCase().includes(q)||
+      (c.how+" "+c.events+" "+c.strength+" "+c.since).toLowerCase().includes(q);
+  }).slice(0,5);
+  const dra=DRAMA.map((d,i)=>({d,i})).filter(({d})=>
+    (d.title+" "+d.ppl+" "+d.sum+" "+d.out+" "+d.type).toLowerCase().includes(q)
+  ).slice(0,6);
+  let html="";
+  if(isl.length){
+    html+=`<div class="sr-group">Islanders</div>`+isl.map(p=>{
+      const[bc,bl]=STBADGE[p.status];
+      return `<div class="sr-item" onclick="pickSearch('${p.id}')">
+        <div class="sr-img">${imgTag(p)}</div>
+        <div><div class="sr-name">${p.name}</div><div class="sr-sub">${p.age} · ${p.job}</div></div>
+        <span class="sr-badge ${bc}">${bl}</span></div>`;
+    }).join("");
+  }
+  if(cpl.length){
+    html+=`<div class="sr-group">Couples</div>`+cpl.map(({c,i})=>{
+      const A=byId(c.a),B=byId(c.b);
+      const stCol=c.overall>=73?'var(--green)':c.overall>=63?'var(--gold)':'var(--orange)';
+      return `<div class="sr-item" onclick="pickCouple(${i})">
+        <div class="sr-couple-imgs"><div class="sr-cimg">${imgTag(A)}</div><div class="sr-cimg">${imgTag(B)}</div></div>
+        <div><div class="sr-name">${A.name.split(" ")[0]} &amp; ${B.name.split(" ")[0]}</div><div class="sr-sub">${c.strength} · since ${c.since}</div></div>
+        <span class="sr-badge" style="background:${stCol}22;color:${stCol}">${c.overall}</span></div>`;
+    }).join("");
+  }
+  if(dra.length){
+    html+=`<div class="sr-group">Drama &amp; Events</div>`+dra.map(({d,i})=>
+      `<div class="sr-item" onclick="pickDrama(${i})">
+        <div class="sr-ep">Ep ${d.ep}</div>
+        <div><div class="sr-name">${d.title}</div><div class="sr-sub">${d.ppl}</div></div>
+        <span class="sr-badge sr-badge-type">${d.type}</span></div>`
+    ).join("");
+  }
+  searchResults.innerHTML=html||`<div class="sr-empty">No matches for “${searchInput.value.trim()}”.</div>`;
+  searchResults.classList.add("show");
+}
+function pickSearch(id){searchInput.value="";searchResults.classList.remove("show");openProfile(id);}
+function expandSection(sel){const s=document.querySelector(sel);if(s)s.classList.remove("collapsed");}
+function flashEl(el){if(!el)return;el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}
+function pickCouple(i){
+  searchInput.value="";searchResults.classList.remove("show");
+  expandSection("#couples");
+  const card=document.getElementById("cpl-"+i);
+  if(card){card.classList.remove("collapsed");card.scrollIntoView({behavior:"smooth",block:"center"});flashEl(card);}
+}
+function pickDrama(i){
+  searchInput.value="";searchResults.classList.remove("show");
+  expandSection("#drama");
+  dramaFilter="All";$$("#dramaFilters .btn[data-f]").forEach(b=>b.classList.toggle("on",b.dataset.f==="All"));
+  renderDrama();
+  const ev=document.querySelector(`#dramaList .devent[data-didx="${i}"]`);
+  if(ev){ev.scrollIntoView({behavior:"smooth",block:"center"});flashEl(ev);}
+}
+searchInput.addEventListener("input",runSearch);
+searchInput.addEventListener("focus",runSearch);
+document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))searchResults.classList.remove("show");});
+window.pickSearch=pickSearch;window.pickCouple=pickCouple;window.pickDrama=pickDrama;
+
 // ---- Update bar / button ----
 function toast(msg,ms){const t=$("#toast");if(!t)return;t.innerHTML=msg;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("show"),ms||4200);}
 function runUpdate(){wikiSync(true);}

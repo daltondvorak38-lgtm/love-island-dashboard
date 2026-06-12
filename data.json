@@ -1,0 +1,153 @@
+{
+  "generated_at": "2026-06-09T00:00:00Z",
+  "sources_used": ["seed"],
+  "status": {
+    "episode": 7,
+    "day": 7,
+    "activeIslanders": 15,
+    "activeCouples": 6,
+    "updated": "Jun 9, 2026",
+    "lastRecouple": "Day 5 — Girls' choice (aired Jun 7)",
+    "lastDumping": "Sean Reifel (Day 6) — left single after recoupling",
+    "bombshells": ["Sol Mýa", "Jen Terry", "Caleb McDaniel"],
+    "newArrivals": ["Sol Mýa", "Jen Terry", "Caleb McDaniel"]
+  },
+  "islanders": [
+    {"id":"trinity","name":"Trinity Tatum","age":22,"job":"Model","home":"Newport News, Virginia","flag":"🇺🇸","sex":"F","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-trinity-en-052826-5d6dd6.png","color":"#ff5d7e","wants":["Respectful","Main-character energy","Confident","Loyal"],"traits":"Self-assured, playful and unafraid to flirt; calls herself 'the prize.'","strength":"Knows what she wants and goes for it; brings high energy.","crit":"Some viewers find the 'prize' confidence a touch much early on.","story":"Picked Bryce on night one as the only woman to choose him; rode out the Day 5 recoupling together and kissed every boy in the paint challenge before locking onto him."},
+    {"id":"bryce","name":"Bryce Dettloff","age":29,"job":"DJ & handyman","home":"Los Angeles, California","flag":"🇺🇸","sex":"M","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-bryce-en-052826-fbf5fc.png","color":"#5b8def","wants":["Easygoing","Genuine","Good vibes","Down-to-earth"],"traits":"Laid-back, sweet and steady; the calm one of the villa.","strength":"Patient and understanding — handled Trinity's mixed signals gracefully.","crit":"Low-drama style can read as passive to some fans.","story":"The oldest original islander; chosen by Trinity night one and has been a reassuring constant for her since."},
+    {"id":"gabriel","name":"Gabriel Vasconcelos","age":26,"job":"Model","home":"Miami, FL (Rio de Janeiro)","flag":"🇧🇷","sex":"M","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-gabriel-en-052826-4b30b3.png","color":"#34e3c8","wants":["Affectionate","Adventurous","Open","Passionate"],"traits":"Trilingual charmer bringing 'Brazilian fire'; making out is his love language.","strength":"Warm and reassuring — comforts Beatriz in Portuguese/Spanish.","crit":"Beatriz worries he may chase the next shiny new arrival.","story":"Left single on night one (odd man out), then picked by Beatriz at the Day 5 recoupling to form a brand-new couple."},
+    {"id":"beatriz","name":"Beatriz Hatz","age":25,"job":"Paralympic track athlete","home":"San Diego, California","flag":"🇺🇸","sex":"F","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-beatriz-en-052826-fa46b3.png","color":"#ffd166","wants":["Tall, dark & handsome","Emotionally deep","Secure","Genuine"],"traits":"Paralympic bronze medalist (long jump T64); confident but introspective.","strength":"Self-aware and direct about what she needs from a partner.","crit":"Can spiral into insecurity about not being 'soft and feminine' enough.","story":"Coupled with Sean on night one, but switched to Gabriel at the Day 5 recoupling — a move that left Sean single and dumped."},
+    {"id":"sincere","name":"Sincere Rhea","age":25,"job":"Athlete","home":"Cape May, New Jersey","flag":"🇺🇸","sex":"M","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-sincere-en-052826-a1cfdb.png","color":"#ff8a5b","wants":["A chase","Loyal","Playful","Reassuring"],"traits":"Cheesy, name-proud flirt who 'likes the chase'; wears his emotions openly.","strength":"Communicative and willing to work through conflict.","crit":"Quick to anger and jealousy — bristled at Melanie's paint-challenge antics.","story":"Chose Melanie over Aniya night one; the pair have been volatile but keep finding their way back ('all roads lead to Rome')."},
+    {"id":"melanie","name":"Melanie Moreno","age":24,"job":"Bikini store manager","home":"Los Angeles, California","flag":"🇩🇴","sex":"F","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-melanie-en-052826-4c9d16.png","color":"#ff5d7e","wants":["Fun","Passionate","Confident","Spicy"],"traits":"Brings Dominican flair; bold, flirty and not afraid to stir the pot.","strength":"Magnetic and expressive; keeps things exciting.","crit":"The drawn-out paint-challenge kiss with Corbin read as messy to viewers.","story":"Wanted by both boys night one and chose Sincere; their up-and-down dynamic is one of the season's central storylines."},
+    {"id":"kc","name":"KC Chandler","age":23,"job":"Nursing assistant","home":"Fresno, California","flag":"🇺🇸","sex":"M","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-kc-en-052826-1ca4ac.png","color":"#3ddc84","wants":["Caring","Fun","Affectionate","Confident"],"traits":"Cheeky healthcare worker who jokes 'women love men in scrubs.'","strength":"Easygoing humor and a settled night-one connection with Aniya.","crit":"Joked about feeling 'blessed' by the new bombshells — and got shut down by Aniya.","story":"Paired with Aniya as the last two standing night one; stable until the bombshell comment caused friction on Day 6."},
+    {"id":"aniya","name":"Aniya Harvey","age":23,"job":"Marketing","home":"Tyrone, Georgia","flag":"🇺🇸","sex":"F","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-aniya-en-052826-d1f53b.png","color":"#5b8def","wants":["Attentive","Honest","Confident","Family-minded"],"traits":"Daughter of NBA player Donnell Harvey; 'a bit competitive' but friendly and 'so extra.'","strength":"Direct — names disrespect the moment she feels it.","crit":"Some see the competitive streak flaring early.","story":"Wanted Sincere night one but he chose Melanie, leaving her to pair with KC. Pushed back hard on KC's bombshell joke Day 6."},
+    {"id":"zach","name":"Zach Georgiou","age":26,"job":"Digital creator","home":"Birmingham, England","flag":"🇬🇧","sex":"M","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-zach-en-052826-815ea7.png","color":"#34e3c8","wants":["Cat person","Genuine","Easygoing","Loyal"],"traits":"British charm; brother of S7 bombshell Charlie Georgiou. Has a cat named Lolo.","strength":"Settled quickly and makes his partner feel secure.","crit":"Came in to 'do better' — fans waiting to see real depth.","story":"Coupled with Kenzie night one, but lost her to bombshell Corbin at the recoupling — then immediately locked in with bombshell Kayda."},
+    {"id":"kayda","name":"Kayda Reese Bosse","age":22,"job":"Server / former model","home":"Manchester, New Hampshire","flag":"🇺🇸","sex":"F","status":"bombshell","entered":1,"photo":"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/love-island-usa-season-8-kayda.jpg","color":"#ff9f43","wants":["Safe & secure","Sweet","Tall","Genuine"],"traits":"Former HS basketball shooting guard (5'9\"); left NYC modeling for a slower pace.","strength":"Grounded and warm; brings calm certainty to her couple.","crit":"Entered as a bombshell — some fans wary of how fast she locked in.","story":"Bombshell who arrived in premiere week and chose Zach at the Day 5 recoupling; the two look 'locked in.'"},
+    {"id":"corbin","name":"Corbin Mims","age":22,"job":"Influencer / villa-rental owner","home":"Miami, Florida","flag":"🇺🇸","sex":"M","status":"bombshell","entered":4,"photo":"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/pea_lis8_characterportrait_titlesocial_textless_1920x1080_corbin_4277.jpg","color":"#ff8a5b","wants":["Family-oriented","Ambitious","Loyal","Driven"],"traits":"Fitness content creator and co-owner of a Turks & Caicos villa-rental business; Stetson marketing grad.","strength":"Decisive and confident — 'the power was in my hands.'","crit":"Broke up a fan-favorite couple on arrival; seen as a disruptor.","story":"Bombshell who picked Kenzie first at the Day 5 recoupling, ending her couple with Zach and creating a new pairing."},
+    {"id":"kenzie","name":"Kenzie Annis","age":24,"job":"Nurse (new grad)","home":"Kennesaw, Georgia","flag":"🇺🇸","sex":"F","status":"active","entered":1,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-kenzie-en-052826-81070b.png","color":"#ffd166","wants":["Family-oriented","Wants 5–10 kids","Stable","Kind"],"traits":"Graduated nursing school two days before the villa; 'starving for some boys' after 18 months single.","strength":"Open about wanting a big family and a real future.","crit":"Swapped from Zach to Corbin fast — some question the whiplash.","story":"Coupled with Zach night one, then chosen by bombshell Corbin at the Day 5 recoupling."},
+    {"id":"sol","name":"Sol Mýa","age":24,"job":"Model & artist","home":"Orange, CA (lives in LA)","flag":"🇺🇸","sex":"F","status":"bombshell","entered":6,"photo":"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/pea_lis8_characterportrait_titlesocial_textless_1920x1080_sol_4277.jpg","color":"#ff5d7e","wants":["A challenge","Confident","Driven","Magnetic"],"traits":"Fashion model who also paints, writes and sings; 'doesn't have a problem getting guys.'","strength":"Fearless and competitive — comes to win.","crit":"Openly there 'to take one of their men.'","story":"Stormed the Day 6 slumber-party challenge in red paint and singled out Corbin, KC and Sincere."},
+    {"id":"jen","name":"Jen Terry","age":23,"job":"Model","home":"Melbourne, FL (lives in LA)","flag":"🇺🇸","sex":"F","status":"bombshell","entered":6,"photo":"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/pea_lis8_characterportrait_titlesocial_textless_1920x1080_jen_4277.jpg","color":"#ff8a5b","wants":["Ambitious","Confident","Attentive","Real"],"traits":"Pro model (Guess, SKIMS, Tecovas) working NY/LA/Miami.","strength":"Knows her worth and is upfront about her intentions.","crit":"'There to take one of their men' — instant threat to the girls.","story":"Entered Day 6 right after Sol, kissing the chained-up boys before the blindfolds came off."},
+    {"id":"caleb","name":"Caleb McDaniel","age":21,"job":"Model & fitness","home":"Asheboro, NC (lives in Charleston)","flag":"🇺🇸","sex":"M","status":"bombshell","entered":6,"photo":"https://www.peacocktv.com/sites/peacock/files/styles/scale_862/public/2026/06/pea_lis8_characterportrait_titlesocial_textless_1920x1080_caleb_4277.jpg","color":"#5b8def","wants":["Fun","Confident","Genuine","Active"],"traits":"Charleston-based model (Home Depot campaigns) and gym devotee.","strength":"Youthful energy; the girls were quick to gravitate to him.","crit":"Youngest in the villa — unproven so far.","story":"The night's surprise third bombshell on Day 6, cut loose to meet the women immediately."},
+    {"id":"sean","name":"Sean Reifel","age":29,"job":"Police officer","home":"Easton, Pennsylvania","flag":"🇺🇸","sex":"M","status":"dumped","entered":1,"exited":6,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-sean-en-052826-3996ff.png","color":"#5c5775","wants":["Thoughtful","Caring","Mature","Genuine"],"traits":"Police officer and dad to a young son; the steady, caring type.","strength":"Emotionally supportive — 'I'll help you sift through it.'","crit":"Couldn't build a strong enough connection to survive the first vote.","story":"Coupled with Beatriz night one, but she chose Gabriel at the Day 5 recoupling, leaving Sean single. Dumped from the villa Day 6."},
+    {"id":"vasana","name":"Vasana Montgomery","age":25,"job":"Business owner","home":"Beaverton, Oregon","flag":"🇺🇸","sex":"F","status":"removed","entered":0,"photo":"https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2026-05/love-island-season-8-vasana-en-052826-a39f47.png","color":"#ff4d5e","wants":["—"],"traits":"Originally cast as an OG islander.","strength":"—","crit":"—","story":"Removed from the cast before entering the villa (May 29) after videos surfaced of her using racist language. Never appeared in the villa."}
+  ],
+  "couples": [
+    {"a":"trinity","b":"bryce","since":"Day 1","len":"6 days","how":"Trinity was the only woman to pick Bryce on night one, making them the first official couple of the season.","events":"Survived the Day 5 recoupling together; Trinity kissed every boy in the Day 6 paint challenge before locking onto Bryce.","e":78,"l":72,"a_":74,"c":80,"overall":77,"strength":"Strong"},
+    {"a":"gabriel","b":"beatriz","since":"Day 5","len":"1 day","how":"Beatriz chose Gabriel at the Day 5 girls' recoupling, leaving Sean single.","events":"Honeymoon glow, but Beatriz already flagged a lack of deep conversation and fears Gabriel will chase a new arrival.","e":58,"l":64,"a_":80,"c":55,"overall":62,"strength":"Testing"},
+    {"a":"sincere","b":"melanie","since":"Day 1","len":"6 days","how":"Both girls wanted Sincere night one; he chose Melanie.","events":"Volatile early arguments, then reconciliation — until Melanie's drawn-out paint-challenge kiss with Corbin reignited Sincere's jealousy on Day 6.","e":60,"l":66,"a_":82,"c":50,"overall":60,"strength":"Rocky"},
+    {"a":"kc","b":"aniya","since":"Day 1","len":"6 days","how":"KC and Aniya were the last two standing on night one and coupled by default.","events":"Comfortable until KC joked he felt 'blessed' by the bombshell arrivals; Aniya shut it down on Day 6.","e":64,"l":70,"a_":68,"c":62,"overall":66,"strength":"Steady-ish"},
+    {"a":"zach","b":"kayda","since":"Day 5","len":"1 day","how":"Bombshell Kayda chose Zach at the Day 5 recoupling after he was left by Kenzie.","events":"Looked the most 'locked in' of the new pairs; Kayda says Zach makes her feel safe and comfortable.","e":70,"l":74,"a_":72,"c":73,"overall":72,"strength":"Strong start"},
+    {"a":"corbin","b":"kenzie","since":"Day 5","len":"1 day","how":"Bombshell Corbin picked Kenzie first at the Day 5 recoupling, ending her couple with Zach.","events":"Corbin gushed that picking her was 'easy'; both came in wanting family and a real future.","e":66,"l":68,"a_":70,"c":64,"overall":67,"strength":"Promising"}
+  ],
+  "timeline": [
+    {"day":"Day 1","title":"First Coupling","notes":["6 men, 5 women (Vasana removed pre-villa). Gabriel left single."],"pairs":[
+      {"a":"Trinity","b":"Bryce","cls":"cur","txt":"Trinity → Bryce (only woman to pick him)"},
+      {"a":"Sean","b":"Beatriz","cls":"former","txt":"Sean ⇄ Beatriz"},
+      {"a":"Sincere","b":"Melanie","cls":"toxic","txt":"Sincere ⇄ Melanie (Aniya also wanted Sincere)"},
+      {"a":"Zach","b":"Kenzie","cls":"former","txt":"Zach ⇄ Kenzie"},
+      {"a":"KC","b":"Aniya","cls":"cur","txt":"KC ⇄ Aniya (last two standing)"}
+    ]},
+    {"day":"Premiere week","title":"Bombshells Arrive","notes":["Corbin & Kayda enter as the first bombshells."],"pairs":[
+      {"a":"Corbin","b":"villa","cls":"bomb","txt":"Corbin enters — eyes on Kenzie"},
+      {"a":"Kayda","b":"villa","cls":"bomb","txt":"Kayda enters — eyes on Zach"}
+    ]},
+    {"day":"Day 5","title":"First Recoupling (girls' choice)","notes":["Corbin picked first despite girls' night. Sean left single."],"pairs":[
+      {"a":"Beatriz","b":"Gabriel","cls":"cur","txt":"Beatriz → Gabriel (drops Sean)"},
+      {"a":"Corbin","b":"Kenzie","cls":"cur","txt":"Corbin → Kenzie (breaks Zach+Kenzie)"},
+      {"a":"Kayda","b":"Zach","cls":"cur","txt":"Kayda → Zach"},
+      {"a":"Sincere","b":"Melanie","cls":"toxic","txt":"Sincere ⇄ Melanie (stay)"},
+      {"a":"Trinity","b":"Bryce","cls":"cur","txt":"Trinity ⇄ Bryce (stay)"},
+      {"a":"KC","b":"Aniya","cls":"cur","txt":"KC ⇄ Aniya (stay)"}
+    ]},
+    {"day":"Day 6","title":"Dumping + 3 Bombshells","notes":["Sean dumped (single). Sol, Jen & Caleb storm the slumber-party challenge."],"pairs":[
+      {"a":"Sean","b":"—","cls":"former","txt":"Sean dumped from the villa"},
+      {"a":"Sol","b":"villa","cls":"bomb","txt":"Sol enters — eyes Corbin, KC, Sincere"},
+      {"a":"Jen","b":"villa","cls":"bomb","txt":"Jen enters — 'here to take a man'"},
+      {"a":"Caleb","b":"villa","cls":"bomb","txt":"Caleb enters — meets the girls"}
+    ]}
+  ],
+  "drama": [
+    {"ep":1,"type":"Coupling","cls":"t-cpl","title":"Five couples form on night one","ppl":"All original islanders","sum":"A doors-and-questions game set the first five couples. Gabriel was the odd man out, left single.","out":"First couples locked: Trinity+Bryce, Sean+Beatriz, Sincere+Melanie, Zach+Kenzie, KC+Aniya."},
+    {"ep":1,"type":"Removal","cls":"t-dmp","title":"Vasana Montgomery removed pre-villa","ppl":"Vasana Montgomery","sum":"Days before premiere, videos surfaced of Vasana using racist language. Peacock cut her from the cast.","out":"Never entered the villa; villa opened with 11 islanders."},
+    {"ep":2,"type":"Bombshell","cls":"t-dra","title":"Double bombshell twist","ppl":"Corbin Mims, Kayda Reese Bosse","sum":"Corbin and Kayda entered during the first challenge, immediately shaking the original couplings.","out":"Both set their sights on taken islanders (Kenzie and Zach)."},
+    {"ep":3,"type":"Drama","cls":"t-dra","title":"Sincere & Melanie's volatile streak","ppl":"Sincere Rhea, Melanie Moreno","sum":"The couple cycled through repeated arguments ('left, right and sideways') before reconciling.","out":"Stayed together — for now."},
+    {"ep":5,"type":"Recoupling","cls":"t-rec","title":"First recoupling reshuffles the villa","ppl":"Beatriz, Gabriel, Corbin, Kenzie, Kayda, Zach, Sean","sum":"Girls' choice night — but bombshell Corbin picked first. Beatriz left Sean for Gabriel; Corbin took Kenzie; Kayda took Zach.","out":"Sean left without a partner and vulnerable."},
+    {"ep":5,"type":"Dumping","cls":"t-dmp","title":"Sean dumped from the villa","ppl":"Sean Reifel","sum":"Left single after Beatriz recoupled with Gabriel, Sean was dumped and sent home immediately.","out":"First eliminated islander of S8. Villa down to 12."},
+    {"ep":6,"type":"Triangle","cls":"t-dra","title":"Paint-challenge kiss sparks jealousy","ppl":"Melanie, Sincere, Corbin","sum":"Blindfolded, Melanie locked Sincere and Corbin into a long back-and-forth kissing loop, infuriating Sincere.","out":"Cracks reopen in Sincere & Melanie."},
+    {"ep":6,"type":"Drama","cls":"t-dra","title":"KC's 'blessed' comment","ppl":"KC Chandler, Aniya Harvey","sum":"KC joked he felt 'blessed' by the bombshell arrivals; Aniya bluntly told him it wasn't funny.","out":"Tension in a previously steady couple."},
+    {"ep":6,"type":"Bombshell","cls":"t-dra","title":"Triple bombshell storms the slumber party","ppl":"Sol Mýa, Jen Terry, Caleb McDaniel","sum":"Sol, Jen and Caleb crashed the lingerie challenge. Sol singled out Corbin, KC and Sincere; Caleb met the girls.","out":"Honeymoon phase declared over; first public vote teased."},
+    {"ep":6,"type":"Vote","cls":"t-rec","title":"First public vote announced","ppl":"The public","sum":"Ariana announced the season's first interactive fan vote via the Love Island app.","out":"Power shifts to viewers — results pending."},
+    {"ep":7,"type":"Vote","cls":"t-rec","title":"First public recoupling vote opens","ppl":"Caleb, Jen, Sol + the public","sum":"Viewers vote to pair the three new bombshells: which girl couples with Caleb, and which boys couple with Jen and Sol. Voting opened 10:30pm ET and ran ~2.5 hours.","out":"Results revealed Thursday Jun 11 (Ep 8) — a recoupling looms."}
+  ],
+  "log": [
+    {"ep":"Ep 1","date":"Jun 2, 2026","day":"Day 1","rows":[
+      {"t":"arr","label":"Arrivals","tx":"11 original islanders enter (Vasana removed pre-villa)."},
+      {"t":"cpl","label":"New Couples","tx":"Trinity+Bryce, Sean+Beatriz, Sincere+Melanie, Zach+Kenzie, KC+Aniya."},
+      {"t":"dra","label":"Drama","tx":"Gabriel left single as the odd man out."}
+    ]},
+    {"ep":"Ep 2","date":"Jun 3, 2026","day":"Day 2","rows":[
+      {"t":"arr","label":"Arrivals","tx":"Bombshells Corbin Mims & Kayda Reese Bosse enter during the first challenge."},
+      {"t":"dra","label":"Drama","tx":"Corbin and Kayda target Kenzie and Zach."}
+    ]},
+    {"ep":"Ep 3","date":"Jun 4, 2026","day":"Day 3","rows":[
+      {"t":"dra","label":"Drama","tx":"Sincere & Melanie's arguments escalate, then settle."}
+    ]},
+    {"ep":"Ep 4","date":"Jun 6, 2026","day":"Day 4","rows":[
+      {"t":"dra","label":"Drama","tx":"Bombshells deepen connections; tension builds ahead of the recoupling."}
+    ]},
+    {"ep":"Ep 5","date":"Jun 7, 2026","day":"Day 5","rows":[
+      {"t":"rec","label":"Recoupling","tx":"Girls' choice. Beatriz→Gabriel, Corbin→Kenzie, Kayda→Zach; Trinity+Bryce, Sincere+Melanie, KC+Aniya stay."},
+      {"t":"dmp","label":"Dumping","tx":"Sean left single and was dumped from the villa."},
+      {"t":"cpl","label":"New Couples","tx":"Gabriel+Beatriz, Corbin+Kenzie, Zach+Kayda formed."}
+    ]},
+    {"ep":"Ep 6","date":"Jun 8, 2026","day":"Day 6","rows":[
+      {"t":"arr","label":"Arrivals","tx":"Triple bombshell: Sol Mýa, Jen Terry & Caleb McDaniel crash the slumber-party challenge."},
+      {"t":"dra","label":"Drama","tx":"Melanie's paint-challenge kiss with Corbin angers Sincere; KC's 'blessed' joke upsets Aniya."},
+      {"t":"rec","label":"Vote","tx":"First public fan vote of the season announced."}
+    ]},
+    {"ep":"Ep 7","date":"Jun 9, 2026","day":"Day 7","rows":[
+      {"t":"rec","label":"Vote","tx":"First public recoupling vote opens — fans pick partners for bombshells Caleb, Jen & Sol."},
+      {"t":"dra","label":"Drama","tx":"The three bombshells stir up the freshly recoupled villa; couples brace for the results."},
+      {"t":"rec","label":"Pending","tx":"Vote results revealed Thursday Jun 11 (Ep 8) — a recoupling is coming."}
+    ]}
+  ],
+  "history": {
+    "trinity":[{"d":"Day 1","c":"<b>Enters villa.</b> Only woman to pick Bryce — first couple of the season."},{"d":"Day 5","c":"Stays with Bryce at the recoupling."},{"d":"Day 6","c":"Kisses every boy in the paint challenge before locking onto Bryce."}],
+    "bryce":[{"d":"Day 1","c":"<b>Enters villa.</b> Chosen by Trinity."},{"d":"Day 5","c":"Survives recoupling with Trinity."},{"d":"Day 6","c":"Reflects on Sean's exit; reaffirms with Trinity."}],
+    "gabriel":[{"d":"Day 1","c":"<b>Enters villa.</b> Left single (odd man out)."},{"d":"Day 5","c":"<b>Chosen by Beatriz</b> at the recoupling — first couple."},{"d":"Day 6","c":"Reassures Beatriz in Portuguese/Spanish; she flags a lack of deep talks."}],
+    "beatriz":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Sean."},{"d":"Day 5","c":"<b>Recouples with Gabriel</b>, leaving Sean single."},{"d":"Day 6","c":"Voices fear Gabriel may chase a new arrival."}],
+    "sincere":[{"d":"Day 1","c":"<b>Enters villa.</b> Wanted by Aniya & Melanie; picks Melanie."},{"d":"Day 3","c":"Volatile arguments with Melanie, then reconcile."},{"d":"Day 5","c":"Stays with Melanie."},{"d":"Day 6","c":"Furious over Melanie's long kiss with Corbin in the challenge."}],
+    "melanie":[{"d":"Day 1","c":"<b>Enters villa.</b> Chosen by Sincere over Aniya."},{"d":"Day 3","c":"On-and-off conflict with Sincere."},{"d":"Day 5","c":"Recouples with Sincere (stays)."},{"d":"Day 6","c":"Drawn-out paint-challenge kiss with Corbin sparks drama."}],
+    "kc":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Aniya (last two standing)."},{"d":"Day 5","c":"Stays with Aniya."},{"d":"Day 6","c":"'Blessed' bombshell joke upsets Aniya; Sol names him a target."}],
+    "aniya":[{"d":"Day 1","c":"<b>Enters villa.</b> Wanted Sincere; ends up with KC."},{"d":"Day 5","c":"Stays with KC."},{"d":"Day 6","c":"Shuts down KC's bombshell comment."}],
+    "zach":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Kenzie."},{"d":"Day 5","c":"<b>Loses Kenzie to Corbin</b>; recouples with bombshell Kayda."},{"d":"Day 6","c":"Looks 'locked in' with Kayda."}],
+    "kayda":[{"d":"Premiere wk","c":"<b>Enters as a bombshell.</b>"},{"d":"Day 5","c":"<b>Chooses Zach</b> at the recoupling."},{"d":"Day 6","c":"Says Zach makes her feel safe and comfortable."}],
+    "corbin":[{"d":"Premiere wk","c":"<b>Enters as a bombshell</b> during the first challenge."},{"d":"Day 5","c":"<b>Picks Kenzie first</b>, breaking up Zach & Kenzie."},{"d":"Day 6","c":"Pulled into Melanie's paint-challenge kiss; gushes over Kenzie."}],
+    "kenzie":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Zach."},{"d":"Day 5","c":"<b>Chosen by bombshell Corbin</b>, ending her couple with Zach."},{"d":"Day 6","c":"Settling in with Corbin."}],
+    "sol":[{"d":"Day 6","c":"<b>Enters as a bombshell.</b> Singles out Corbin, KC & Sincere."}],
+    "jen":[{"d":"Day 6","c":"<b>Enters as a bombshell.</b> 'Here to take one of their men.'"}],
+    "caleb":[{"d":"Day 6","c":"<b>Enters as the night's third bombshell.</b> Meets the girls right away."}],
+    "sean":[{"d":"Day 1","c":"<b>Enters villa.</b> Coupled with Beatriz."},{"d":"Day 5","c":"Left single after Beatriz picks Gabriel."},{"d":"Day 6","c":"<b>Dumped from the villa</b> and sent home."}],
+    "vasana":[{"d":"Pre-villa","c":"<b>Removed from the cast</b> before entering after racist videos surfaced."}]
+  },
+  "edges": [
+    {"a":"trinity","b":"bryce","t":"current"},
+    {"a":"gabriel","b":"beatriz","t":"current"},
+    {"a":"sincere","b":"melanie","t":"current"},
+    {"a":"kc","b":"aniya","t":"current"},
+    {"a":"zach","b":"kayda","t":"current"},
+    {"a":"corbin","b":"kenzie","t":"current"},
+    {"a":"sean","b":"beatriz","t":"former"},
+    {"a":"zach","b":"kenzie","t":"former"},
+    {"a":"sincere","b":"aniya","t":"former"},
+    {"a":"corbin","b":"melanie","t":"rivalry"},
+    {"a":"sincere","b":"corbin","t":"rivalry"},
+    {"a":"sol","b":"corbin","t":"bomb"},
+    {"a":"sol","b":"kc","t":"bomb"},
+    {"a":"sol","b":"sincere","t":"bomb"},
+    {"a":"jen","b":"kc","t":"bomb"},
+    {"a":"jen","b":"bryce","t":"bomb"},
+    {"a":"caleb","b":"trinity","t":"bomb"},
+    {"a":"caleb","b":"aniya","t":"bomb"}
+  ]
+}
