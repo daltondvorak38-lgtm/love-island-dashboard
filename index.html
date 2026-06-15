@@ -431,13 +431,12 @@ const LIVE = await loadLiveData();
    overrides each of these via data.json on every run.
    ============================================================ */
 const STATUS = {
-  episode: 8, day: 8, activeIslanders: 15, activeCouples: 6,
-  updated: "Jun 11, 2026",
-  lastRecouple: "Day 5 — Girls' choice (aired Jun 7)",
-  lastDumping: "Sean Reifel (Day 6) — left single after recoupling",
-  bombshells: ["Sol Mýa","Jen Terry","Caleb McDaniel"],
-  newArrivals: ["Sol Mýa","Jen Terry","Caleb McDaniel"],
-  pendingVote: "First America's Vote results DELAYED to Ep 9 (app technical issues) — bombshell recoupling still looms"
+  episode: 9, day: 9, activeIslanders: 14, activeCouples: 7,
+  updated: "Jun 12, 2026",
+  lastRecouple: "Day 9 — America's first public vote (aired Jun 12)",
+  lastDumping: "Beatriz Hatz (Day 9) — bottom three, not saved by Corbin",
+  bombshells: [],
+  newArrivals: ["Sol Mýa","Jen Terry","Caleb McDaniel"]
 };
 if(LIVE&&LIVE.status)Object.assign(STATUS,LIVE.status);
 /* ============================================================
@@ -543,7 +542,7 @@ function renderStatGrid(){
   <div class="stat"><div class="k">Active Islanders</div><div class="v">${STATUS.activeIslanders}</div><div class="d">incl. ${bombs.length} new bombshell${bombs.length!==1?"s":""}</div></div>
   <div class="stat"><div class="k">Active Couples</div><div class="v">${STATUS.activeCouples}</div><div class="d">+ ${bombs.length} single bombshell${bombs.length!==1?"s":""}</div></div>
   <div class="stat"><div class="k">Latest Dumping</div><div class="v sm">${lastDumpName}</div><div class="d">${lastDumpDay}</div></div>
-  <div class="stat wide"><div class="k">Most Recent Recoupling</div><div class="v sm">${STATUS.lastRecouple}</div><div class="d">Beatriz→Gabriel · Corbin→Kenzie · Kayda→Zach</div></div>
+  <div class="stat wide"><div class="k">Most Recent Recoupling</div><div class="v sm">${STATUS.lastRecouple}</div><div class="d">Caleb→Kenzie · Gabriel→Jen · Sincere→Sol · Corbin saved Melanie</div></div>
   <div class="stat wide"><div class="k">Current Bombshells</div><div class="v sm">${bombs.map(b=>b.name.split(" ")[0]).join(" · ")||"None"}</div>
     <div class="d">${bombs.map(b=>`<span class="chip orange">${b.name}</span>`).join("")}</div></div>
   ${STATUS.pendingVote?`<div class="stat wide"><div class="k">⚠️ Pending</div><div class="v sm">America's Vote — delayed</div><div class="d">${STATUS.pendingVote}</div></div>`:""}
@@ -1012,23 +1011,21 @@ const NET_NODES=ISLANDERS.filter(i=>i.status!=="removed"); // include dumped (Se
 // edges: type current|former|bomb|rivalry
 let EDGES=(LIVE&&LIVE.edges) || [
   {a:"trinity",b:"bryce",t:"current"},
-  {a:"gabriel",b:"beatriz",t:"current"},
-  {a:"sincere",b:"melanie",t:"current"},
   {a:"kc",b:"aniya",t:"current"},
   {a:"zach",b:"kayda",t:"current"},
-  {a:"corbin",b:"kenzie",t:"current"},
+  {a:"caleb",b:"kenzie",t:"current"},
+  {a:"gabriel",b:"jen",t:"current"},
+  {a:"sincere",b:"sol",t:"current"},
+  {a:"corbin",b:"melanie",t:"current"},
   {a:"sean",b:"beatriz",t:"former"},
   {a:"zach",b:"kenzie",t:"former"},
   {a:"sincere",b:"aniya",t:"former"},
-  {a:"sincere",b:"corbin",t:"rivalry"},
-  {a:"kenzie",b:"melanie",t:"rivalry"},
+  {a:"gabriel",b:"beatriz",t:"former"},
+  {a:"sincere",b:"melanie",t:"former"},
+  {a:"corbin",b:"kenzie",t:"former"},
   {a:"bryce",b:"zach",t:"rivalry"},
-  {a:"gabriel",b:"jen",t:"bomb"},
-  {a:"gabriel",b:"sol",t:"bomb"},
-  {a:"sincere",b:"sol",t:"bomb"},
-  {a:"kenzie",b:"caleb",t:"bomb"},
-  {a:"bryce",b:"kayda",t:"bomb"},
-  {a:"melanie",b:"corbin",t:"bomb"}
+  {a:"melanie",b:"sol",t:"rivalry"},
+  {a:"bryce",b:"kayda",t:"bomb"}
 ];
 const EDGE_COL={current:"#3ddc84",former:"#5c5775",bomb:"#ff9f43",rivalry:"#ff4d5e"};
 const svg=$("#net");
